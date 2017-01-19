@@ -1,9 +1,7 @@
 $(function() {
-    window.requestFileSystem = window.requestFileSystem;
-
     var query = location.search.substring(1);
     document.getElementById('text').innerHTML += query;
-    download(query, String(query) + '.json', 'text/plain');
+    //download(query, String(query) + '.json', 'text/plain');
 });
 
 // Not sure if I am going to keep this function
@@ -20,7 +18,7 @@ function download(data, filename, type) {
         a.click();
         setTimeout(function() {
             document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);  
+            window.URL.revokeObjectURL(url); 
         }, 0); 
     }
 }
