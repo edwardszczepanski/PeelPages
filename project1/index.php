@@ -54,24 +54,7 @@ while($stmt->fetch())
                 <td><button id="first" type="button" class="btn btn-success">Export</button></td>
               </tr>', $r1,$r2 );
 	      ?>
-              <tr>
-                <td>Friends</td>
-                <td>01/18/17</td>
-                <td><button id="first" type="button" class="btn btn-success">Open</button></td>
-                <td><button id="first" type="button" class="btn btn-success">Export</button></td>
-              </tr>
-              <tr>
-                <td>Business</td>
-                <td>03/24/14</td>
-                <td><button id="first" type="button" class="btn btn-success">Open</button></td>
-                <td><button id="first" type="button" class="btn btn-success">Export</button></td>
-              </tr>
-              <tr>
-                <td>Tinder</td>
-                <td>02/13/16</td>
-                <td><button id="first" type="button" class="btn btn-success">Open</button></td>
-                <td><button id="first" type="button" class="btn btn-success">Export</button></td>
-              </tr>
+              
             </tbody>
           </table>
         </div>
