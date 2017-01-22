@@ -25,7 +25,6 @@
  <body>
 <?php
 	
-	
 	$add_fName = $_POST['add_fName'];			
 	$add_lName = $_POST['add_lName'];			
 	$add_phone = $_POST['add_phone'];			
