@@ -24,7 +24,7 @@
 
  <body>
 <?php
-		
+	
 	$add_fName = $_POST['add_fName'];			
 	$add_lName = $_POST['add_lName'];			
 	$add_phone = $_POST['add_phone'];			
@@ -34,42 +34,20 @@
 	$add_state = $_POST['add_state'];			
 	$add_zip = $_POST['add_zip'];			
 	$addId = $_POST['addId'];
-	//echo "cao addID--->".$addId."</br>";
-	if($addId==null)
-	{
-		header("Location: http://ix.cs.uoregon.edu/~wang18/CIS422Team1/project1/index.php");
-		exit();
-	}	
-	//echo "SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName ='".$add_fName."' AND c.lName ='".$add_lName."' AND c.address = '".$add_address."' AND c.e_address ='".$add_email ."' AND c.phone_num ='". $add_phone."' AND c.city ='".$add_city."' AND c.state ='".$add_state."' AND c.zip ='". $add_zip."';";
-	
-	if((!empty($add_fName))&&(!empty($add_lName))){	
-	//echo "SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName ='".$add_fName."' AND c.lName ='".$add_lName."' AND c.address = '".$add_address."' AND c.e_address ='".$add_email ."' AND c.phone_num ='". $add_phone."' AND c.city ='".$add_city."' AND c.state ='".$add_state."' AND c.zip ='". $add_zip."';";
-	
-	$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName ='".$add_fName."' AND c.lName ='".$add_lName."' AND (c.address = '".$add_address."' OR c.address IS NULL) AND (c.e_address ='".$add_email ."' OR c.e_address IS NULL) AND (c.phone_num ='". $add_phone."' OR c.phone_num IS NULL) AND (c.city ='".$add_city."' OR c.city IS NULL) AND (c.state ='".$add_state."' OR c.state IS NULL) AND (c.zip ='". $add_zip."'OR c.zip IS NULL) AND c.addre_id = ".$addId.";");
-	//echo "</br>SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName =".$add_fName." AND c.lName =".$add_lName." AND (c.address = '".$add_address."' OR c.address = NULL);";
-	//$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName =".$add_fName." AND c.lName =".$add_lName." AND (c.address = '".$add_address."' OR c.address IS NULL);");
 
+	if((!empty($add_fName))&&(!empty($add_lName))){
+		echo "INSERT INTO peelPages.contact (fName, lName, address, phone_num, e_address, city, state, zip, addre_id) VALUES (".$add_fName.",".$add_lName.");";
+				
+		$stmt = $mysqli -> prepare("INSERT INTO peelPages.contact (fName, lName, addre_id) VALUES (".$add_fName.",".$add_lName.",".$addId.");		");
+	
 	$stmt->execute();
-	$countNum=null;
-	$stmt->bind_result($countNum);
 	
-	while($stmt->fetch())printf('',$countNum);	
-	//printf('----->%s',$countNum);
-	
-	
-	//echo "INSERT INTO peelPages.contact (fName, lName, address, phone_num, e_address, city, state, zip, addre_id) VALUES (".$add_fName.",".$add_lName.");";
-	if($countNum<1)
-	{			
-		//echo "INSERT INTO peelPages.contact (fName, lName, addre_id,phone_num, e_address,address, city, state, zip) VALUES ('".$add_fName."','".$add_lName."','".$addId."','".$add_phone."','".$add_email."','".$add_address."','".$add_city."','".$add_state."','".$add_zip."');";
-		$stmt = $mysqli -> prepare("INSERT INTO peelPages.contact (fName, lName, addre_id,phone_num, e_address,address, city, state, zip) VALUES ('".$add_fName."','".$add_lName."','".$addId."','".$add_phone."','".$add_email."','".$add_address."','".$add_city."','".$add_state."','".$add_zip."');");
-		$stmt->execute();
-	}
 
-	}	
+		}
+			
+
+	
 ?>  
-
-
-
      <div>
          <button id="second" type="button" class="btn btn-danger">Quit App</button>
          <button id="second" type="button" class="btn btn-danger">New Address Book</button>
@@ -214,23 +192,13 @@
                 <td><input type="text" name="add_zip">			
                 </td>
                 </tr>
-				
-				<tr>
-                <td>
-                <input style="display: none;"type="text" name="addId" value="<?php echo $addId;?>">								
-
-				</td>
-                <td>
-                </td>
-                <td>
-				</td>
-                <td>
-				<input class="btn btn-success" type="submit" value="Save" style="float: right;">
-                <input class="btn btn-success" type="reset" value="Erase" style="float: right; margin-right: 20px;">		
-                </td>
-                </tr>
-				
                 </table>
+                <input type="text" name="addId" value="<?php echo $addId;?>">								
+
+            	<input class="btn btn-success" type="submit" value="Submit" >
+                <input class="btn btn-success" type="reset" value="Erase">
+
+
             </form> 
                  
             </div>
