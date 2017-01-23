@@ -35,7 +35,7 @@
           <p>Address Book Name</p>
                  
 			 
-			<select size="10" form="sendForm" name="addId" class="form-control" style="height: 240px;">
+			<select size="10" form="sendForm" name="addId" class="form-control" style="height: 240px;" required>
 
  	      <?php
 			$stmt = $mysqli -> prepare("SELECT add_name, add_id FROM address");
@@ -50,7 +50,7 @@
             </select>
 
 			
-			<form action="contacts.php" method="POST" id="sendForm" style="margin-top: 2%;">				
+			<form action="contacts.php" method="POST" id="sendForm" style="margin-top: 2%;" target="_blank">				
 				<input class="btn btn-success" type="submit" value="Open">
 				<button id="" type="button" class="btn btn-success">Export</button>				
 			</form>
