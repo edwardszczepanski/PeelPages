@@ -22,11 +22,9 @@
 
  <body>
      <div>
-         <button id="second" type="button" class="btn btn-danger">Quit App</button>
+         <!--button id="second" type="button" class="btn btn-danger">Quit App</button>
          <button id="second" type="button" class="btn btn-danger">New Address Book</button>
-         <button id="second" type="button" class="btn btn-danger">Import</button>
- 
-
+         <button id="second" type="button" class="btn btn-danger">Import</button-->
  
  
          <div class="container">
