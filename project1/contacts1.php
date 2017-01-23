@@ -49,9 +49,9 @@
 	
 ?>  
      <div>
-         <button id="second" type="button" class="btn btn-danger">Quit App</button>
+         <!--button id="second" type="button" class="btn btn-danger">Quit App</button>
          <button id="second" type="button" class="btn btn-danger">New Address Book</button>
-         <button id="second" type="button" class="btn btn-danger">Import</button>
+         <button id="second" type="button" class="btn btn-danger">Import</button-->
 		 <a class="btn btn-success" href="http://ix.cs.uoregon.edu/~wang18/CIS422Team1/project1/index.php">Back</a>
 
 
