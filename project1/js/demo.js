@@ -4,42 +4,26 @@ $(function() {
     $('#first').on('click', function(){
         pages.push(window.open('./childWindow.html?' + guid()));
     });
-    $('#second').on('click', function(){
+    $('#closeAll').on('click', function(){
         for (var i = 0; i < pages.length; ++i){
             pages[i].close();
         }
     });
-	window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
-	//window.requestFileSystem(type, size, successCallback, opt_errorCallback);
-	if (window.requestFileSystem) {
-		initFileSystem();
+
+	$("input:checkbox").on('click', function() {
+	// in the handler, 'this' refers to the box clicked on
+	var $box = $(this);
+	if ($box.is(":checked")) {
+	// the name of the box is retrieved using the .attr() method
+	// as it is assumed and expected to be immutable
+	var group = "input:checkbox[name='" + $box.attr("name") + "']";
+	// the checked state of the group/box on the other hand will change
+	// and the current value is retrieved using .prop() method
+	$(group).prop("checked", false);
+	$box.prop("checked", true);
 	} else {
-		console.log('Not Supported');
+	$box.prop("checked", false);
 	}
 });
+});
 
-function initFileSystem() {
-	navigator.webkitPersistentStorage.requestQuota(1024 * 1024 * 5,
-	function(grantedSize) {
-		window.requestFileSystem(window.PERSISTENT, grantedSize, function(fs) {
-			filesystem = fs;
-			setupFormEventListener();
-			listFiles();
-		}, errorHandler);
-	}, errorHandler);
-}
-
-function onInitFS(fs){
-	console.log('Opened file system: ' + fs.name);
-}
-
-
-function guid() {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  }
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-    s4() + '-' + s4() + s4() + s4();
-}
