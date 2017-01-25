@@ -29,7 +29,7 @@
  
          <div class="container">
            <h2>Address Books</h2>
-           <p>Find yo address books here!</p>            
+           <p>Find your address books here!</p>            
           <p>Address Book Name</p>
                  
 			 
@@ -48,32 +48,16 @@
             </select>
 
 			
-			<form action="contacts.php" method="POST" id="sendForm" style="margin-top: 2%;" target="_blank">				
+			<form action="contacts.php" method="POST" id="sendForm" style="margin-top: 2%;" target="_blank">
 				<input class="btn btn-success" type="submit" value="Open">
 				<button id="" type="button" class="btn btn-success">Export</button>				
+				<button id="closeAll" type="button" class="btn btn-success">Close All</button>				
 			</form>
           </div>
      </div>
      <div>
      </div>
  </body>
-  <script>
- $("input:checkbox").on('click', function() {
-  // in the handler, 'this' refers to the box clicked on
-  var $box = $(this);
-  if ($box.is(":checked")) {
-    // the name of the box is retrieved using the .attr() method
-    // as it is assumed and expected to be immutable
-    var group = "input:checkbox[name='" + $box.attr("name") + "']";
-    // the checked state of the group/box on the other hand will change
-    // and the current value is retrieved using .prop() method
-    $(group).prop("checked", false);
-    $box.prop("checked", true);
-  } else {
-    $box.prop("checked", false);
-  }
-});
-</script>
      <script src="./js/demo.js"></script>
      <script src="./js/bootstrap.min.js"></script>
  </html>
