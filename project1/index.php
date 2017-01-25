@@ -29,7 +29,7 @@
  
          <div class="container">
            <h2>Address Books</h2>
-           <p>Find yo address books here!</p>            
+           <p>Find your address books here!</p>            
           <p>Address Book Name</p>
                  
 			 
@@ -48,7 +48,7 @@
             </select>
 
 			
-			<form action="contacts.php" method="POST" id="sendForm" style="margin-top: 2%;" target="_blank">				
+			<form action="contacts.php" method="POST" id="sendForm" style="margin-top: 2%;" target="_blank">
 				<input class="btn btn-success" type="submit" value="Open">
 				<button id="" type="button" class="btn btn-success">Export</button>				
 				<button id="closeAll" type="button" class="btn btn-success">Close All</button>				
