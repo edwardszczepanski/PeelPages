@@ -43,28 +43,28 @@
 	}	
 	//echo "SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName ='".$add_fName."' AND c.lName ='".$add_lName."' AND c.address = '".$add_address."' AND c.e_address ='".$add_email ."' AND c.phone_num ='". $add_phone."' AND c.city ='".$add_city."' AND c.state ='".$add_state."' AND c.zip ='". $add_zip."';";
 	
-	if((!empty($add_fName))&&(!empty($add_lName))){	
-	//echo "SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName ='".$add_fName."' AND c.lName ='".$add_lName."' AND c.address = '".$add_address."' AND c.e_address ='".$add_email ."' AND c.phone_num ='". $add_phone."' AND c.city ='".$add_city."' AND c.state ='".$add_state."' AND c.zip ='". $add_zip."';";
-	
-	$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.contact c WHERE (c.fName ='".$add_fName."'OR c.fName IS NULL) AND (c.lName ='".$add_lName."' OR c.lName IS NULL) AND (c.address1 = '".$add_address1."' OR c.address1 IS NULL) AND (c.address2 ='".$add_address2."' OR c.address2 IS NULL) AND (c.e_address ='".$add_email."' OR c.e_address IS NULL) AND (c.phone_num ='". $add_phone."' OR c.phone_num IS NULL) AND (c.city ='".$add_city."' OR c.city IS NULL) AND (c.state ='".$add_state."' OR c.state IS NULL) AND (c.zip ='". $add_zip."'OR c.zip IS NULL) AND c.addre_id = ".$addId.";");
-	//echo "</br>SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName =".$add_fName." AND c.lName =".$add_lName." AND (c.address = '".$add_address."' OR c.address = NULL);";
-	//$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName =".$add_fName." AND c.lName =".$add_lName." AND (c.address = '".$add_address."' OR c.address IS NULL);");
+	if((!empty($add_fName))||(!empty($add_lName))){	
+		//echo "SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName ='".$add_fName."' AND c.lName ='".$add_lName."' AND c.address = '".$add_address."' AND c.e_address ='".$add_email ."' AND c.phone_num ='". $add_phone."' AND c.city ='".$add_city."' AND c.state ='".$add_state."' AND c.zip ='". $add_zip."';";
+		
+		$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.contact c WHERE (c.fName ='".$add_fName."'OR c.fName IS NULL) AND (c.lName ='".$add_lName."' OR c.lName IS NULL) AND (c.address1 = '".$add_address1."' OR c.address1 IS NULL) AND (c.address2 ='".$add_address2."' OR c.address2 IS NULL) AND (c.e_address ='".$add_email."' OR c.e_address IS NULL) AND (c.phone_num ='". $add_phone."' OR c.phone_num IS NULL) AND (c.city ='".$add_city."' OR c.city IS NULL) AND (c.state ='".$add_state."' OR c.state IS NULL) AND (c.zip ='". $add_zip."'OR c.zip IS NULL) AND c.addre_id = ".$addId.";");
+		//echo "</br>SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName =".$add_fName." AND c.lName =".$add_lName." AND (c.address = '".$add_address."' OR c.address = NULL);";
+		//$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName =".$add_fName." AND c.lName =".$add_lName." AND (c.address = '".$add_address."' OR c.address IS NULL);");
 
-	$stmt->execute();
-	$countNum=null;
-	$stmt->bind_result($countNum);
-	
-	while($stmt->fetch())printf('',$countNum);	
-	//printf('----->%s',$countNum);
-	
-	
-	//echo "INSERT INTO peelPages.contact (fName, lName, address, phone_num, e_address, city, state, zip, addre_id) VALUES (".$add_fName.",".$add_lName.");";
-	if($countNum<1)
-	{			
-		//echo "INSERT INTO peelPages.contact (fName, lName, addre_id,phone_num, e_address,address, city, state, zip) VALUES ('".$add_fName."','".$add_lName."','".$addId."','".$add_phone."','".$add_email."','".$add_address."','".$add_city."','".$add_state."','".$add_zip."');";
-		$stmt = $mysqli -> prepare("INSERT INTO peelPages.contact (fName, lName, addre_id,phone_num, e_address,address1,address2, city, state, zip) VALUES ('".$add_fName."','".$add_lName."','".$addId."','".$add_phone."','".$add_email."','".$add_address1."','".$add_address2."','".$add_city."','".$add_state."','".$add_zip."');");
 		$stmt->execute();
-	}
+		$countNum=null;
+		$stmt->bind_result($countNum);
+		
+		while($stmt->fetch())printf('',$countNum);	
+		//printf('----->%s',$countNum);
+		
+		
+		//echo "INSERT INTO peelPages.contact (fName, lName, address, phone_num, e_address, city, state, zip, addre_id) VALUES (".$add_fName.",".$add_lName.");";
+		if($countNum<1)
+		{			
+			//echo "INSERT INTO peelPages.contact (fName, lName, addre_id,phone_num, e_address,address, city, state, zip) VALUES ('".$add_fName."','".$add_lName."','".$addId."','".$add_phone."','".$add_email."','".$add_address."','".$add_city."','".$add_state."','".$add_zip."');";
+			$stmt = $mysqli -> prepare("INSERT INTO peelPages.contact (fName, lName, addre_id,phone_num, e_address,address1,address2, city, state, zip) VALUES ('".$add_fName."','".$add_lName."','".$addId."','".$add_phone."','".$add_email."','".$add_address1."','".$add_address2."','".$add_city."','".$add_state."','".$add_zip."');");
+			$stmt->execute();
+		}
 
 	}	
 ?>  
@@ -90,7 +90,7 @@
 	}	
 	//echo "SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName ='".$add_fName."' AND c.lName ='".$add_lName."' AND c.address = '".$add_address."' AND c.e_address ='".$add_email ."' AND c.phone_num ='". $add_phone."' AND c.city ='".$add_city."' AND c.state ='".$add_state."' AND c.zip ='". $add_zip."';";
 	
-	if((!empty($edit_fName))&&(!empty($edit_lName))){	
+	if((!empty($edit_fName))||(!empty($edit_lName))){	
 		$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.contact c WHERE c.contact_id ='".$contact_Id."';");
 		$stmt->execute();
 		$countNum=null;
@@ -290,8 +290,8 @@
 					<td><input type="text" name="edit_zip" id="edit_zi">			
 					</td>				
                 <td>
-				<input style="width: 50px;"type="text" name="addId" value="<?php echo $addId;?>">
-				<input style="width: 50px;"type="text" name="contact_Id" id="edit_contact_Id">		
+				<input style="width: 50px; display: none;"type="text" name="addId" value="<?php echo $addId;?>">
+				<input style="width: 50px; display: none;"type="text" name="contact_Id" id="edit_contact_Id">		
 				</td>
 				
                 <td>
@@ -406,13 +406,13 @@
             <h3>Do you want to delete <span class="delete_contact_label" id="delete_contact_label"></span></h3>
             <form action="contacts.php" method="POST" id="sendForm" style="margin-top: 2%;">	
             	
-				<input style="width: 50px;"type="text" name="addId" value="<?php echo $addId;?>">
-				<input style="width: 50px;"type="text" name="del_contact_Id" id="del_contact_Id">		
+				<input style="width: 50px;display: none;" type="text" name="addId" value="<?php echo $addId;?>">
+				<input style="width: 50px;display: none;" type="text" name="del_contact_Id" id="del_contact_Id">		
 			
 				<input class="btn btn-success" type="submit" value="Yes" style="float: right;">
                 <button type="button" class="btn btn-success" id="delete_modal_no" style="float: right; margin-right: 20px;" >No</button>
 
-				<input style="width: 20px;"type="text" name="del_flag" id="del_flag">		
+				<input style="width: 20px; display: none;"type="text" name="del_flag" id="del_flag">		
 
 			
             </form> 
