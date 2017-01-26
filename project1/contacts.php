@@ -43,28 +43,28 @@
 	}	
 	//echo "SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName ='".$add_fName."' AND c.lName ='".$add_lName."' AND c.address = '".$add_address."' AND c.e_address ='".$add_email ."' AND c.phone_num ='". $add_phone."' AND c.city ='".$add_city."' AND c.state ='".$add_state."' AND c.zip ='". $add_zip."';";
 	
-	if((!empty($add_fName))&&(!empty($add_lName))){	
-	//echo "SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName ='".$add_fName."' AND c.lName ='".$add_lName."' AND c.address = '".$add_address."' AND c.e_address ='".$add_email ."' AND c.phone_num ='". $add_phone."' AND c.city ='".$add_city."' AND c.state ='".$add_state."' AND c.zip ='". $add_zip."';";
-	
-	$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.contact c WHERE (c.fName ='".$add_fName."'OR c.fName IS NULL) AND (c.lName ='".$add_lName."' OR c.lName IS NULL) AND (c.address1 = '".$add_address1."' OR c.address1 IS NULL) AND (c.address2 ='".$add_address2."' OR c.address2 IS NULL) AND (c.e_address ='".$add_email."' OR c.e_address IS NULL) AND (c.phone_num ='". $add_phone."' OR c.phone_num IS NULL) AND (c.city ='".$add_city."' OR c.city IS NULL) AND (c.state ='".$add_state."' OR c.state IS NULL) AND (c.zip ='". $add_zip."'OR c.zip IS NULL) AND c.addre_id = ".$addId.";");
-	//echo "</br>SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName =".$add_fName." AND c.lName =".$add_lName." AND (c.address = '".$add_address."' OR c.address = NULL);";
-	//$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName =".$add_fName." AND c.lName =".$add_lName." AND (c.address = '".$add_address."' OR c.address IS NULL);");
+	if((!empty($add_fName))||(!empty($add_lName))){	
+		//echo "SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName ='".$add_fName."' AND c.lName ='".$add_lName."' AND c.address = '".$add_address."' AND c.e_address ='".$add_email ."' AND c.phone_num ='". $add_phone."' AND c.city ='".$add_city."' AND c.state ='".$add_state."' AND c.zip ='". $add_zip."';";
+		
+		$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.contact c WHERE (c.fName ='".$add_fName."'OR c.fName IS NULL) AND (c.lName ='".$add_lName."' OR c.lName IS NULL) AND (c.address1 = '".$add_address1."' OR c.address1 IS NULL) AND (c.address2 ='".$add_address2."' OR c.address2 IS NULL) AND (c.e_address ='".$add_email."' OR c.e_address IS NULL) AND (c.phone_num ='". $add_phone."' OR c.phone_num IS NULL) AND (c.city ='".$add_city."' OR c.city IS NULL) AND (c.state ='".$add_state."' OR c.state IS NULL) AND (c.zip ='". $add_zip."'OR c.zip IS NULL) AND c.addre_id = ".$addId.";");
+		//echo "</br>SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName =".$add_fName." AND c.lName =".$add_lName." AND (c.address = '".$add_address."' OR c.address = NULL);";
+		//$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName =".$add_fName." AND c.lName =".$add_lName." AND (c.address = '".$add_address."' OR c.address IS NULL);");
 
-	$stmt->execute();
-	$countNum=null;
-	$stmt->bind_result($countNum);
-	
-	while($stmt->fetch())printf('',$countNum);	
-	//printf('----->%s',$countNum);
-	
-	
-	//echo "INSERT INTO peelPages.contact (fName, lName, address, phone_num, e_address, city, state, zip, addre_id) VALUES (".$add_fName.",".$add_lName.");";
-	if($countNum<1)
-	{			
-		//echo "INSERT INTO peelPages.contact (fName, lName, addre_id,phone_num, e_address,address, city, state, zip) VALUES ('".$add_fName."','".$add_lName."','".$addId."','".$add_phone."','".$add_email."','".$add_address."','".$add_city."','".$add_state."','".$add_zip."');";
-		$stmt = $mysqli -> prepare("INSERT INTO peelPages.contact (fName, lName, addre_id,phone_num, e_address,address1,address2, city, state, zip) VALUES ('".$add_fName."','".$add_lName."','".$addId."','".$add_phone."','".$add_email."','".$add_address1."','".$add_address2."','".$add_city."','".$add_state."','".$add_zip."');");
 		$stmt->execute();
-	}
+		$countNum=null;
+		$stmt->bind_result($countNum);
+		
+		while($stmt->fetch())printf('',$countNum);	
+		//printf('----->%s',$countNum);
+		
+		
+		//echo "INSERT INTO peelPages.contact (fName, lName, address, phone_num, e_address, city, state, zip, addre_id) VALUES (".$add_fName.",".$add_lName.");";
+		if($countNum<1)
+		{			
+			//echo "INSERT INTO peelPages.contact (fName, lName, addre_id,phone_num, e_address,address, city, state, zip) VALUES ('".$add_fName."','".$add_lName."','".$addId."','".$add_phone."','".$add_email."','".$add_address."','".$add_city."','".$add_state."','".$add_zip."');";
+			$stmt = $mysqli -> prepare("INSERT INTO peelPages.contact (fName, lName, addre_id,phone_num, e_address,address1,address2, city, state, zip) VALUES ('".$add_fName."','".$add_lName."','".$addId."','".$add_phone."','".$add_email."','".$add_address1."','".$add_address2."','".$add_city."','".$add_state."','".$add_zip."');");
+			$stmt->execute();
+		}
 
 	}	
 ?>  
@@ -82,7 +82,6 @@
 	$edit_zip = $_POST['edit_zip'];			
 	$addId = $_POST['addId'];
 	$contact_Id = $_POST['contact_Id'];
-echo "-->".$edit_fName."<--";
 	//echo "cao addID--->".$addId."</br>";
 	if($addId==null)
 	{
@@ -91,7 +90,7 @@ echo "-->".$edit_fName."<--";
 	}	
 	//echo "SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName ='".$add_fName."' AND c.lName ='".$add_lName."' AND c.address = '".$add_address."' AND c.e_address ='".$add_email ."' AND c.phone_num ='". $add_phone."' AND c.city ='".$add_city."' AND c.state ='".$add_state."' AND c.zip ='". $add_zip."';";
 	
-	if((!empty($edit_fName))&&(!empty($edit_lName))){	
+	if((!empty($edit_fName))||(!empty($edit_lName))){	
 		$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.contact c WHERE c.contact_id ='".$contact_Id."';");
 		$stmt->execute();
 		$countNum=null;
@@ -103,7 +102,7 @@ echo "-->".$edit_fName."<--";
 		//echo "INSERT INTO peelPages.contact (fName, lName, address, phone_num, e_address, city, state, zip, addre_id) VALUES (".$add_fName.",".$add_lName.");";
 		if($countNum==1)
 		{			
-			echo "UPDATE peelPages.contact SET fname='".$edit_fName ."', lname='".$edit_lName ."', phone_num='".$edit_phone."', e_address='".$edit_email."', address1='".$edit_address1."', address2='".$edit_address2 ."', city='".$edit_city."', state='".$edit_state."', zip='".$edit_zip."' WHERE contact_id ='".$contact_Id." ';" ;
+			//echo "UPDATE peelPages.contact SET fname='".$edit_fName ."', lname='".$edit_lName ."', phone_num='".$edit_phone."', e_address='".$edit_email."', address1='".$edit_address1."', address2='".$edit_address2 ."', city='".$edit_city."', state='".$edit_state."', zip='".$edit_zip."' WHERE contact_id ='".$contact_Id." ';" ;
 			$stmt = $mysqli -> prepare("UPDATE peelPages.contact SET fname='".$edit_fName ."', lname='".$edit_lName ."', phone_num='".$edit_phone."', e_address='".$edit_email."', address1='".$edit_address1."', address2='".$edit_address2 ."', city='".$edit_city."', state='".$edit_state."', zip='".$edit_zip."' WHERE contact_id ='".$contact_Id." '; ");
 			$stmt->execute();
 
@@ -112,7 +111,17 @@ echo "-->".$edit_fName."<--";
 	}	
 ?>  
 
-
+<?php
+	$del_flag = $_POST['del_flag'];
+	$del_contact_Id = $_POST['del_contact_Id'];
+	//echo "-->".$del_flag."<--".$del_contact_Id;
+	if($del_flag==1){
+		
+		//echo "<br>DELETE FROM peelPages.contact WHERE contact_id = '".$del_contact_Id."';";
+		$stmt = $mysqli -> prepare("DELETE FROM peelPages.contact WHERE contact_id = '".$del_contact_Id."';");
+		$stmt->execute();
+	}
+?>
 
      <div>
          <!--button id="second" type="button" class="btn btn-danger">Quit App</button>
@@ -194,13 +203,13 @@ echo "-->".$edit_fName."<--";
 				<p>%s</p>
 				</td>
 				<td>
-				<input type="text" name="%s" style="width:50px;" value="%s" >
+				<input style="display:none;" type="text" name="%s" style="width:50px;" value="%s" >
 
 				 <button id="edit_contact" type="button" class="btn btn-info" onclick="pop_Edit()">Edit</button>
         
 				</td>
 				<td>
-				 <button id="delete_contact" type="button" class="btn btn-danger">Delete</button>
+				 <button id="delete_contact" type="button" class="btn btn-danger" onclick="pop_delete()">Delete</button>
 				</td>  				
 				</tr>',$fname,$lname,$phone_num,$e_address,$addr1,$addr2,$city,$state,$zip,$contact_id,$contact_id);
 			?>
@@ -281,8 +290,8 @@ echo "-->".$edit_fName."<--";
 					<td><input type="text" name="edit_zip" id="edit_zi">			
 					</td>				
                 <td>
-				<input style="width: 50px;"type="text" name="addId" value="<?php echo $addId;?>">
-				<input style="width: 50px;"type="text" name="contact_Id" id="edit_contact_Id">		
+				<input style="width: 50px; display: none;"type="text" name="addId" value="<?php echo $addId;?>">
+				<input style="width: 50px; display: none;"type="text" name="contact_Id" id="edit_contact_Id">		
 				</td>
 				
                 <td>
@@ -387,6 +396,31 @@ echo "-->".$edit_fName."<--";
             </div>
 
 </div>
+
+
+		<!--delete contact modal-->
+		<!-- Modal content -->
+		<div id="delete_myModal" class="modal">
+            <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Do you want to delete <span class="delete_contact_label" id="delete_contact_label"></span></h3>
+            <form action="contacts.php" method="POST" id="sendForm" style="margin-top: 2%;">	
+            	
+				<input style="width: 50px;display: none;" type="text" name="addId" value="<?php echo $addId;?>">
+				<input style="width: 50px;display: none;" type="text" name="del_contact_Id" id="del_contact_Id">		
+			
+				<input class="btn btn-success" type="submit" value="Yes" style="float: right;">
+                <button type="button" class="btn btn-success" id="delete_modal_no" style="float: right; margin-right: 20px;" >No</button>
+
+				<input style="width: 20px; display: none;"type="text" name="del_flag" id="del_flag">		
+
+			
+            </form> 
+                 
+            </div>
+		</div>	
+
+
           </div>
      </div>
      <div>
@@ -397,7 +431,42 @@ echo "-->".$edit_fName."<--";
      <script src="./js/contacts.js"></script>
      <script src="./js/bootstrap.min.js"></script>
 	 <script >
-	 
+	 //delete contact modal
+	function pop_delete() {	
+		// Get the modal
+		var delete_modal = document.getElementById('delete_myModal');
+		// Get the button that opens the modal
+		var delete_btn = document.getElementById("delete_contact");
+		// Get the <span> element that closes the modal
+		var delete_span = document.getElementsByClassName("close")[2];
+		// When the user clicks the button, open the modal
+		//edit_btn.onclick = function() {
+		delete_modal.style.display = "block";
+		
+		var delete_flag = document.getElementById("del_flag");
+		delete_flag.value="1";
+		
+		//}
+		// When the user clicks on <span> (x), close the modal
+		delete_span.onclick = function() {
+		delete_modal.style.display = "none";
+		delete_flag.value="0";
+		}
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+		if (event.target == delete_modal) {
+			delete_modal.style.display = "none";
+			delete_flag.value="0";
+		}
+		}	
+		//when click no
+		var delete_no_btn = document.getElementById("delete_modal_no");
+		delete_no_btn.onclick = function() {
+			delete_modal.style.display = "none";
+			delete_flag.value="0";
+		}
+
+	}
 	
 	</script>
 
