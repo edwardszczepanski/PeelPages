@@ -113,7 +113,6 @@ echo "-->".$edit_fName."<--";
 ?>  
 
 
-
      <div>
          <!--button id="second" type="button" class="btn btn-danger">Quit App</button>
          <button id="second" type="button" class="btn btn-danger">New Address Book</button>
@@ -134,7 +133,7 @@ echo "-->".$edit_fName."<--";
 			?>
 			</h2>
            <p>Find your contacts here!</p>            
-           <table class="table" >
+           <table id="myTable" class="table" >
              <thead>
                <tr>
                  <th>First Name</th>
@@ -300,6 +299,9 @@ echo "-->".$edit_fName."<--";
 			
 			<!--create contact modal-->
 			<button id="myBtn" type="button" class="btn btn-info" >Add New Person</button>
+			<!--create contact modal-->
+			<button id="sortName" type="button" class="btn btn-info" >Sort by Name</button>
+			<button id="sortZIP" type="button" class="btn btn-info" >Sort by ZIP</button>
 
             <div id="myModal" class="modal">
             

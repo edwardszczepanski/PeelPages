@@ -1,18 +1,27 @@
 $(function() {
+	document.getElementById("sortName").onclick = function(){
+        table = document.getElementById("myTable");
+		sortTable(table, 1, false);
+    };
+	document.getElementById("sortZIP").onclick = function(){
+        table = document.getElementById("myTable");
+		sortTable(table, 8, false);
+    };
+
 	$("input:checkbox").on('click', function() {
-	// in the handler, 'this' refers to the box clicked on
-	var $box = $(this);
-	if ($box.is(":checked")) {
-	// the name of the box is retrieved using the .attr() method
-	// as it is assumed and expected to be immutable
-	var group = "input:checkbox[name='" + $box.attr("name") + "']";
-	// the checked state of the group/box on the other hand will change
-	// and the current value is retrieved using .prop() method
-	$(group).prop("checked", false);
-	$box.prop("checked", true);
-	} else {
-	$box.prop("checked", false);
-	}
+        // in the handler, 'this' refers to the box clicked on
+        var $box = $(this);
+        if ($box.is(":checked")) {
+            // the name of the box is retrieved using the .attr() method
+            // as it is assumed and expected to be immutable
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            // the checked state of the group/box on the other hand will change
+            // and the current value is retrieved using .prop() method
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+        } else {
+            $box.prop("checked", false);
+        }
 	});
 
 		//create contact modal
@@ -23,7 +32,7 @@ $(function() {
 		// Get the <span> element that closes the modal
 		var span = document.getElementsByClassName("close")[1];
 		//var span = document.getElementById('add_close');
-		//		var modal = document.getElementById('myModal');
+		//var modal = document.getElementById('myModal');
 
 		// When the user clicks the button, open the modal
 		btn.onclick = function() {
@@ -33,15 +42,15 @@ $(function() {
 		//var modal = document.getElementById('myModal');
 
 		span.onclick = function() {
-		//var modal = document.getElementById('myModal');	
-		modal.style.display = "none";
+            //var modal = document.getElementById('myModal');	
+            modal.style.display = "none";
 		}
 		// When the user clicks anywhere outside of the modal, close it
 		//var modal = document.getElementById('myModal');
 		window.onclick = function(event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
 		}
 	
 	//edit contact modal set contact_Id
@@ -86,33 +95,47 @@ $(function() {
 		$(edit_ci).val($ci11);
 		$(edit_st).val($st11);
 		$(edit_zi).val($zi11);
-		
 	});
 });
-	//edit contact modal
-	function pop_Edit() {
-		// Get the modal
-		var edit_modal = document.getElementById('edit_myModal');
-		// Get the button that opens the modal
-		var edit_btn = document.getElementById("edit_contact");
-		// Get the <span> element that closes the modal
-		var edit_span = document.getElementsByClassName("close")[0];
-		// When the user clicks the button, open the modal
-		//edit_btn.onclick = function() {
+
+function sortTable(table, col, reverse) {
+    var tb = table.tBodies[0]; 
+    var tr = Array.prototype.slice.call(tb.rows, 0); 
+    var i;
+    reverse = -((+reverse) || -1);
+    tr = tr.sort(function (a, b) { // sort rows
+        return reverse // `-1 *` if want opposite order
+            * (a.cells[col].textContent.trim() // using `.textContent.trim()` for test
+                .localeCompare(b.cells[col].textContent.trim())
+               );
+    });
+    for(i = 0; i < tr.length; ++i) tb.appendChild(tr[i]); // append each row in order
+}
+
+//edit contact modal
+function pop_Edit() {
+	// Get the modal
+	var edit_modal = document.getElementById('edit_myModal');
+	// Get the button that opens the modal
+	var edit_btn = document.getElementById("edit_contact");
+	// Get the <span> element that closes the modal
+	var edit_span = document.getElementsByClassName("close")[0];
+	// When the user clicks the button, open the modal
+	//edit_btn.onclick = function() {
 		edit_modal.style.display = "block";
-		//}
-		// When the user clicks on <span> (x), close the modal
-		edit_span.onclick = function() {
+	//}
+	// When the user clicks on <span> (x), close the modal
+	edit_span.onclick = function() {
 		edit_modal.style.display = "none";
-		}
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
+	}
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
 		if (event.target == edit_modal) {
 			edit_modal.style.display = "none";
 		}
-		}	
 	}
-	
-	//add contact modal
-	//function pop_add() {	}
-	
+}
+
+//add contact modal
+//function pop_add() {	}
+
