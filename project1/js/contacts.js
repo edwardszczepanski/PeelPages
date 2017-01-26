@@ -96,6 +96,29 @@ $(function() {
 		$(edit_st).val($st11);
 		$(edit_zi).val($zi11);
 	});
+
+	//delete contact modal set name
+	$(delete_contact).click(function(){
+		 //var $del_contact_id_val = $( this ).prev().val();
+		//alert($target);
+		//$(del_contact_Id).val($del_contact_id_val);
+		
+		var $del_fn = $(this).parent().parent().children()[0];
+		var $del_ln = $(this).parent().parent().children()[1];
+		var $del_contact_id_val = $(this).parent().parent().children()[9];
+
+		var $del_fn1 = $del_fn.children;
+		var $del_fn11=$del_fn1[0].innerHTML;
+		var $del_ln1 = $del_ln.children;
+		var $del_ln11=$del_ln1[0].innerHTML;
+		//var $del_contact_id_val1 = $del_contact_id_val.children;
+		var $del_contact_id_val11=$del_contact_id_val.children[0].value
+		
+		$(delete_contact_label).text($del_fn11+" "+$del_ln11);
+		$(del_contact_Id).val($del_contact_id_val11);
+		//$(del_edit_fn).val($del_fn11);
+		//$(del_edit_ln).val($del_ln11);		
+	});
 });
 
 function sortTable(table, col, reverse) {
@@ -136,6 +159,6 @@ function pop_Edit() {
 	}
 }
 
-//add contact modal
-//function pop_add() {	}
-
+	
+	
+	
