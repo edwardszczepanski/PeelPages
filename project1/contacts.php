@@ -46,7 +46,7 @@
 	if((!empty($add_fName))&&(!empty($add_lName))){	
 	//echo "SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName ='".$add_fName."' AND c.lName ='".$add_lName."' AND c.address = '".$add_address."' AND c.e_address ='".$add_email ."' AND c.phone_num ='". $add_phone."' AND c.city ='".$add_city."' AND c.state ='".$add_state."' AND c.zip ='". $add_zip."';";
 	
-	$stmt = $mysqli -> prepare(	"SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName ='".$add_fName."' AND c.lName ='".$add_lName."' AND (c.address1 = '".$add_address1."' OR c.address1 IS NULL) AND (c.address2 ='".$add_address2."' OR c.address2 IS NULL) AND (c.e_address ='".$add_email."' OR c.e_address IS NULL) AND (c.phone_num ='". $add_phone."' OR c.phone_num IS NULL) AND (c.city ='".$add_city."' OR c.city IS NULL) AND (c.state ='".$add_state."' OR c.state IS NULL) AND (c.zip ='". $add_zip."'OR c.zip IS NULL) AND c.addre_id = ".$addId.";");
+	$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.contact c WHERE (c.fName ='".$add_fName."'OR c.fName IS NULL) AND (c.lName ='".$add_lName."' OR c.lName IS NULL) AND (c.address1 = '".$add_address1."' OR c.address1 IS NULL) AND (c.address2 ='".$add_address2."' OR c.address2 IS NULL) AND (c.e_address ='".$add_email."' OR c.e_address IS NULL) AND (c.phone_num ='". $add_phone."' OR c.phone_num IS NULL) AND (c.city ='".$add_city."' OR c.city IS NULL) AND (c.state ='".$add_state."' OR c.state IS NULL) AND (c.zip ='". $add_zip."'OR c.zip IS NULL) AND c.addre_id = ".$addId.";");
 	//echo "</br>SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName =".$add_fName." AND c.lName =".$add_lName." AND (c.address = '".$add_address."' OR c.address = NULL);";
 	//$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName =".$add_fName." AND c.lName =".$add_lName." AND (c.address = '".$add_address."' OR c.address IS NULL);");
 
@@ -65,6 +65,49 @@
 		$stmt = $mysqli -> prepare("INSERT INTO peelPages.contact (fName, lName, addre_id,phone_num, e_address,address1,address2, city, state, zip) VALUES ('".$add_fName."','".$add_lName."','".$addId."','".$add_phone."','".$add_email."','".$add_address1."','".$add_address2."','".$add_city."','".$add_state."','".$add_zip."');");
 		$stmt->execute();
 	}
+
+	}	
+?>  
+
+<?php
+		
+	$edit_fName = $_POST['edit_fName'];			
+	$edit_lName = $_POST['edit_lName'];			
+	$edit_phone = $_POST['edit_phone'];			
+	$edit_email = $_POST['edit_email'];			
+	$edit_address1 = $_POST['edit_address1'];			
+	$edit_address2 = $_POST['edit_address2'];			
+	$edit_city = $_POST['edit_city'];			
+	$edit_state = $_POST['edit_state'];			
+	$edit_zip = $_POST['edit_zip'];			
+	$addId = $_POST['addId'];
+	$contact_Id = $_POST['contact_Id'];
+echo "-->".$edit_fName."<--";
+	//echo "cao addID--->".$addId."</br>";
+	if($addId==null)
+	{
+		header("Location: http://ix.cs.uoregon.edu/~wang18/CIS422Team1/project1/index.php");
+		exit();
+	}	
+	//echo "SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName ='".$add_fName."' AND c.lName ='".$add_lName."' AND c.address = '".$add_address."' AND c.e_address ='".$add_email ."' AND c.phone_num ='". $add_phone."' AND c.city ='".$add_city."' AND c.state ='".$add_state."' AND c.zip ='". $add_zip."';";
+	
+	if((!empty($edit_fName))&&(!empty($edit_lName))){	
+		$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.contact c WHERE c.contact_id ='".$contact_Id."';");
+		$stmt->execute();
+		$countNum=null;
+		$stmt->bind_result($countNum);
+				
+		while($stmt->fetch())printf('',$countNum);	
+		//printf('----->%s',$countNum);
+				
+		//echo "INSERT INTO peelPages.contact (fName, lName, address, phone_num, e_address, city, state, zip, addre_id) VALUES (".$add_fName.",".$add_lName.");";
+		if($countNum==1)
+		{			
+			echo "UPDATE peelPages.contact SET fname='".$edit_fName ."', lname='".$edit_lName ."', phone_num='".$edit_phone."', e_address='".$edit_email."', address1='".$edit_address1."', address2='".$edit_address2 ."', city='".$edit_city."', state='".$edit_state."', zip='".$edit_zip."' WHERE contact_id ='".$contact_Id." ';" ;
+			$stmt = $mysqli -> prepare("UPDATE peelPages.contact SET fname='".$edit_fName ."', lname='".$edit_lName ."', phone_num='".$edit_phone."', e_address='".$edit_email."', address1='".$edit_address1."', address2='".$edit_address2 ."', city='".$edit_city."', state='".$edit_state."', zip='".$edit_zip."' WHERE contact_id ='".$contact_Id." '; ");
+			$stmt->execute();
+
+		}
 
 	}	
 ?>  
@@ -179,64 +222,69 @@
                 <p>First Name:	</p>
                 </td>
                 <td>
-                <input type="text" name="add_fName" id="edit_fn" required>
+                <input type="text" name="edit_fName" id="edit_fn" required>
                 </td>
                 <td>
                 <p>Last Name:	</p>
                 </td>
                 <td>
-                <input type="text" name="add_lName" id="edit_ln" required>
+                <input type="text" name="edit_lName" id="edit_ln" required>
                 </td>
-                </tr>
-                
+                </tr>                
                 <tr>
                 <td>
                 <p>Phone:	</p>
                 </td>
                 <td>
-                <input type="text" name="add_phone" id="edit_ph">
+                <input type="text" name="edit_phone" id="edit_ph">
                 </td>
                 <td>
                 <p>Email:	</p></td>
                 <td>
-                <input type="text" name="add_email" id="edit_em">
+                <input type="text" name="edit_email" id="edit_em">
                 </td>
-                </tr>
-                
-                <tr>
-                <td><p>Address1:	</p></td>
-                <td><input type="text" name="add_address" id="edit_ad">
-                </td>
+                </tr>                
+                <tr>		
+					<td>
+					<p>Address1:	</p>
+					</td>					
+					<td><input type="text" name="edit_address1" id="edit_ad1">
+					</td>					
+					<td>
+					<p>Address2:	</p>
+					</td>					
+					<td><input type="text" name="edit_address2" id="edit_ad2">
+					</td>					
+				</tr>                
+                <tr>				
+					<td>
+					<p>City: </p>
+					</td>
+					
+					<td>
+					<input type="text" name="edit_city" id="edit_ci">
+					</td>
+					
+					<td>
+					<p>State: </p>
+					</td>
+				   
+					<td>
+					<input type="text" name="edit_state" id="edit_st">
+					</td>			
+                </tr>				
+				<tr>               
+			    <td>
+					<p>Zip:	</p>
+					</td>
+						
+					<td><input type="text" name="edit_zip" id="edit_zi">			
+					</td>				
                 <td>
-				<p>City: </p></td>
-                <td>
-                <input type="text" name="add_city" id="edit_ci">
-                </td>
-                </tr>
-                
-                <tr>
-                <td>
-                <p>State: </p></td>
-                <td>
-                <input type="text" name="add_state" id="edit_st">
-                </td>
-                <td>
-                <p>Zip:	</p></td>
-                <td><input type="text" name="add_zip" id="edit_zi">			
-                </td>
-                </tr>
+				<input style="width: 50px;"type="text" name="addId" value="<?php echo $addId;?>">
+				<input style="width: 50px;"type="text" name="contact_Id" id="edit_contact_Id">		
+				</td>
 				
-				<tr>
-                <td>
-                <input style="width: 50px;"type="text" name="addId" value="<?php echo $addId;?>">								
-
-				</td>
-                <td>
-				<input style="width: 50px;"type="text" name="contact_Id" id="edit_contact_Id">								
-
-                </td>
-                <td>
-				</td>
                 <td>
 				<input class="btn btn-success" type="submit" value="Save" style="float: right;">
                 <input class="btn btn-success" type="reset" value="Erase" style="float: right; margin-right: 20px;">		

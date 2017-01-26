@@ -55,9 +55,10 @@ $(function() {
 		var $ph = $(this).parent().parent().children()[2];
 		var $em = $(this).parent().parent().children()[3];
 		var $ad = $(this).parent().parent().children()[4];
-		var $ci = $(this).parent().parent().children()[5];
-		var $st = $(this).parent().parent().children()[6];
-		var $zi = $(this).parent().parent().children()[7];
+		var $ad2 = $(this).parent().parent().children()[5];
+		var $ci = $(this).parent().parent().children()[6];
+		var $st = $(this).parent().parent().children()[7];
+		var $zi = $(this).parent().parent().children()[8];
 		var $fn1 = $fn.children;
 		var $fn11=$fn1[0].innerHTML;
 		var $ln1 = $ln.children;
@@ -68,6 +69,8 @@ $(function() {
 		var $em11=$em1[0].innerHTML;
 		var $ad1 = $ad.children;
 		var $ad11=$ad1[0].innerHTML;
+		var $ad21 = $ad2.children;
+		var $ad211=$ad21[0].innerHTML;
 		var $ci1 = $ci.children;
 		var $ci11=$ci1[0].innerHTML;
 		var $st1 = $st.children;
@@ -78,7 +81,8 @@ $(function() {
 		$(edit_ln).val($ln11);
 		$(edit_ph).val($ph11);
 		$(edit_em).val($em11);
-		$(edit_ad).val($ad11);
+		$(edit_ad1).val($ad11);
+		$(edit_ad2).val($ad211);
 		$(edit_ci).val($ci11);
 		$(edit_st).val($st11);
 		$(edit_zi).val($zi11);
