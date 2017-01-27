@@ -319,11 +319,11 @@ if(!$_SESSION['auth'])
 			
 			<!--create contact modal-->
 			<button id="myBtn" type="button" class="btn btn-info" >Add New Person</button>
-			<a class="btn btn-success" href="logout.php">Logout</a>				
 	
 			<!--create contact modal-->
 			<button id="sortName" type="button" class="btn btn-info" >Sort by Name</button>
 			<button id="sortZIP" type="button" class="btn btn-info" >Sort by ZIP</button>
+			<a class="btn btn-success" href="logout.php">Logout</a>				
 
             <div id="myModal" class="modal">
             
