@@ -231,13 +231,13 @@
                 <p>First Name:	</p>
                 </td>
                 <td>
-                <input type="text" name="edit_fName" id="edit_fn" required>
+                <input type="text" name="edit_fName" id="edit_fn" >
                 </td>
                 <td>
                 <p>Last Name:	</p>
                 </td>
                 <td>
-                <input type="text" name="edit_lName" id="edit_ln" required>
+                <input type="text" name="edit_lName" id="edit_ln" >
                 </td>
                 </tr>                
                 <tr>
@@ -295,7 +295,7 @@
 				</td>
 				
                 <td>
-				<input class="btn btn-success" type="submit" value="Save" style="float: right;">
+				<input class="btn btn-success" type="button" value="Save" style="float: right;" onClick="checkk();">
                 <input class="btn btn-success" type="reset" value="Erase" style="float: right; margin-right: 20px;">		
                 </td>
                 </tr>
@@ -319,20 +319,20 @@
             <div class="modal-content">
             <span id="add_close" class="close">&times;</span>
             <h3>Please fill information</h3>
-            <form action="contacts.php" method="POST" id="sendForm" style="margin-top: 2%;">	
+            <form action="contacts.php" method="POST" id="senddForm" style="margin-top: 2%;">	
             	<table class="addContact">
                 <tr>
                 <td>
                 <p>First Name:	</p>
                 </td>
                 <td>
-                <input type="text" name="add_fName" required>
+                <input type="text" name="add_fName" id="add_fName">
                 </td>
                 <td>
                 <p>Last Name:	</p>
                 </td>
                 <td>
-                <input type="text" name="add_lName" required>
+                <input type="text" name="add_lName" id="add_lName">
                 </td>
                 </tr>
                 
@@ -341,23 +341,23 @@
                 <p>Phone:	</p>
                 </td>
                 <td>
-                <input type="text" name="add_phone">
+                <input type="text" name="add_phone" id="add_phone">
                 </td>
                 <td>
                 <p>Email:	</p></td>
                 <td>
-                <input type="text" name="add_email">
+                <input type="text" name="add_email" id="add_email">
                 </td>
                 </tr>
                 
                 <tr>
 				
 					<td><p>Address1:	</p></td>
-					<td><input type="text" name="add_address1">
+					<td><input type="text" name="add_address1" id="add_address1">
 					</td>
 					
 					<td><p>Address2:	</p></td>
-					<td><input type="text" name="add_address2">
+					<td><input type="text" name="add_address2" id="add_address2">
 					</td>
 					
 				
@@ -367,12 +367,12 @@
 					
 					<td><p>City: </p></td>
 					<td>
-					<input type="text" name="add_city">
+					<input type="text" name="add_city" id="add_city">
 					</td>
 					
 					<td><p>State: </p></td>
 					<td>
-					<input type="text" name="add_state">
+					<input type="text" name="add_state" id="add_state">
 					</td>
                 </tr>
 				
@@ -381,14 +381,14 @@
 					<p>Zip:	</p>
 				</td>
                 <td>
-					<input type="text" name="add_zip">	
+					<input type="text" name="add_zip" id="add_zip">	
                 </td>
                 <td>
 								    <input style="display: none;"type="text" name="addId" value="<?php echo $addId;?>">								
 
 				</td>
                 <td>
-				<input class="btn btn-success" type="submit" value="Save" style="float: right;">
+				<input class="btn btn-success" type="button" value="Save" style="float: right;" onClick="check();">
                 <input class="btn btn-success" type="reset" value="Erase" style="float: right; margin-right: 20px;">		
                 </td>
                 </tr>
@@ -429,6 +429,248 @@
      <div>
      </div>
  </body>
+ 
+ 
+ <script type="text/JavaScript"language="javascript">
+   function check(){
+   
+   //document.getElementById("senddForm").submit();
+     //var su = document.getElementById("sendForm");
+     //su.action="contacts.php";
+     
+     //su.method="POST";
+     //su.submit();
+     //alert('ddd');     
+     
+     var add_f =document.getElementById('add_fName').value;
+     var add_l =document.getElementById('add_lName').value;
+     var add_p =document.getElementById('add_phone').value;
+     var add_a1 =document.getElementById('add_address1').value; 
+     var add_a2 =document.getElementById('add_address2').value;
+     var add_c =document.getElementById('add_city').value;
+     var add_s =document.getElementById('add_state').value;
+     var add_z =document.getElementById('add_zip').value;
+     var add_e =document.getElementById('add_email').value;
+
+     if(((add_f == '') && (add_l == '')) || ((add_p == '') && (add_a1 == '') && (add_a2 == '')
+     && (add_c == '') && (add_s == '') && (add_z == ''))){
+     		//alert("ddd");
+     		if((add_f == '') && (add_l == '')){
+     		alert("Please enter at least your first name or last name!");
+     		}
+     		else{
+     		alert("Please enter at least one address information!");
+     		}
+     }
+     
+     else{
+      
+     var ch = "";
+     if(add_f == ''){
+      ch += 'first name\n';
+     }
+     if(add_l == ''){
+      ch += 'last name\n';
+     }
+     if(add_p == ''){
+      ch += 'phone number\n';
+     }
+     if(add_a1 == ''){
+      ch += 'address 1\n';
+     }
+     if(add_a2 == ''){
+      ch += 'address 2\n';
+     }
+     if(add_c == ''){
+      ch += 'city\n';
+     }
+     if(add_s == ''){
+      ch += 'state\n';
+     }
+     if(add_z == ''){
+      ch += 'zip\n';
+     }
+     if(add_p != ''){
+     	if(((add_p.length == 7) && !(isNaN(add_p)))|| ((add_p.length == 10) && !(isNaN(add_p)))){
+     		ch += '';
+     	}
+     	else{
+     		ch += 'WARRING: Your phone number is wrong!\n';
+     	}
+     }
+     
+     if(add_z != ''){
+     	if(((add_z.length == 5) && !(isNaN(add_z)))|| ((add_z.length == 10))){
+     		if(add_z.length == 10){
+     			if(!(isNaN(add_z.slice(0,4))) && (add_z.charAt(5) == '-') && !(isNaN(add_z.slice(6,9)))){
+     				ch += '';
+     			}
+     			else{
+     				ch += 'WARRING: Your zip code is wrong!\n';
+     			}
+     		}
+     		else{
+     			ch += '';
+     		}
+
+     		
+     	}
+     	else{
+     		ch += 'WARRING: Your zip code is wrong!\n';
+     	}
+     }
+
+
+     if(add_e != ''){
+     	if(add_e.indexOf('@') > -1){
+     		ch += '';
+     	}
+     	else{
+     		ch += 'WARRING: Your email address is invalid\n';
+     	}
+     }
+
+
+     if(ch != ''){
+     var re = confirm('WARRING: You did not fill your:\n' + ch + 'Do you still want to save it?');
+     if(re == true){
+     document.getElementById("senddForm").submit();
+     }else{
+     //alert('buhao');
+     }
+     
+     }
+     if(ch ==''){
+     document.getElementById("senddForm").submit();
+     }
+     }
+      
+     
+           
+     
+   }
+</script>
+
+
+<script type="text/JavaScript"language="javascript">
+   function checkk(){
+   
+   //document.getElementById("senddForm").submit();
+     //var su = document.getElementById("sendForm");
+     //su.action="contacts.php";
+     
+     //su.method="POST";
+     //su.submit();
+     //alert('ddd');     
+     
+     var edit_f =document.getElementById('edit_fn').value;
+     var edit_l =document.getElementById('edit_ln').value;
+     var edit_p =document.getElementById('edit_ph').value;
+     var edit_a1 =document.getElementById('edit_ad1').value; 
+     var edit_a2 =document.getElementById('edit_ad2').value;
+     var edit_c =document.getElementById('edit_ci').value;
+     var edit_s =document.getElementById('edit_st').value;
+     var edit_z =document.getElementById('edit_zi').value;
+     var edit_e =document.getElementById('edit_em').value;
+
+     if(((edit_f == '') && (edit_l == '')) || ((edit_p == '') && (edit_a1 == '') && (edit_a2 == '')
+     && (edit_c == '') && (edit_s == '') && (edit_z == ''))){
+     		//alert("ddd");
+     		if((edit_f == '') && (edit_l == '')){
+     		alert("Please enter at least your first name or last name!");
+     		}
+     		else{
+     		alert("Please enter at least one address information!");
+     		}
+     }
+     
+     else{
+      
+     var ch = "";
+     if(edit_f == ''){
+      ch += 'first name\n';
+     }
+     if(edit_l == ''){
+      ch += 'last name\n';
+     }
+     if(edit_p == ''){
+      ch += 'phone number\n';
+     }
+     if(edit_a1 == ''){
+      ch += 'address 1\n';
+     }
+     if(edit_a2 == ''){
+      ch += 'address 2\n';
+     }
+     if(edit_c == ''){
+      ch += 'city\n';
+     }
+     if(edit_s == ''){
+      ch += 'state\n';
+     }
+     if(edit_z == ''){
+      ch += 'zip\n';
+     }
+     if(edit_p != ''){
+     	if(((edit_p.length == 7) && !(isNaN(edit_p)))|| ((edit_p.length == 10) && !(isNaN(edit_p)))){
+     		ch += '';
+     	}
+     	else{
+     		ch += 'WARRING: Your phone number is wrong!\n';
+     	}
+     }
+     
+     if(edit_z != ''){
+     	if(((edit_z.length == 5) && !(isNaN(edit_z)))|| ((edit_z.length == 10))){
+     		if(edit_z.length == 10){
+     			if(!(isNaN(edit_z.slice(0,4))) && (edit_z.charAt(5) == '-') && !(isNaN(edit_z.slice(6,9)))){
+     				ch += '';
+     			}
+     			else{
+     				ch += 'WARRING: Your zip code is wrong!\n';
+     			}
+     		}
+     		else{
+     			ch += '';
+     		}
+
+     		
+     	}
+     	else{
+     		ch += 'WARRING: Your zip code is wrong!\n';
+     	}
+     }
+
+
+     if(edit_e != ''){
+     	if(edit_e.indexOf('@') > -1){
+     		ch += '';
+     	}
+     	else{
+     		ch += 'WARRING: Your email address is invalid\n';
+     	}
+     }
+
+
+     if(ch != ''){
+     var re = confirm('WARRING: You did not fill your:\n' + ch + 'Do you still want to save it?');
+     if(re == true){
+     document.getElementById("sendForm").submit();
+     }else{
+     //alert('buhao');
+     }
+     
+     }
+     if(ch ==''){
+     document.getElementById("sendForm").submit();
+     }
+     }
+      
+     
+           
+     
+   }
+</script>
  
 </script-->
      <script src="./js/contacts.js"></script>
