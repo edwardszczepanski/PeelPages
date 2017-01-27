@@ -24,7 +24,9 @@
          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
  </head>
 
- <body>
+<body>
+<div class="container" style="margin-left:auto; margin-right:auto;">
+
  <?php
 	$username=$_POST['username'];
     $password=$_POST['password'];
@@ -62,7 +64,7 @@
 			header('location:index.php');
 		}
 		else{
-			echo "Wrong username or password...";
+			echo "<h2>Wrong username or password...</h2>";
 		}
 	}
 	
@@ -94,14 +96,35 @@
 
 ?>
 
-<form method="POST">
-Username:<br>
-    <input type="text" name="username"><br>
-    Password:<br>
-    <input type="password" name="password"><br>
-    <input type="submit">
+<form style="margin-top:60px;" method="POST">
+<table>
+<tr>
+<td><p>Username: </p>
+</td>
+<td>    <input type="text" name="username">
+</td>
+</tr>
+
+<tr>
+<td><p>Password: </p>
+</td>
+<td>    <input type="password" name="password">
+
+</td>
+</tr>
+
+<tr>
+<td><p></p>
+</td>
+<td>    
+    <input class="btn btn-success" style="float:right;margin-top:5px;" type="submit">
+
+</td>
+</tr>
+</table>
+
 
 </form>
-
+</div>
  </body>
 </html>
