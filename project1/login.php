@@ -32,27 +32,27 @@
 	if(isset($username) && isset($password) && !empty($username) && !empty($password))
 	{
 		
-		echo "SELECT * FROM peelPages.auth WHERE username ='".$username."' AND password='".$password."';</br>";
-		echo "SELECT COUNT(*) FROM peelPages.auth WHERE username ='".$username."' AND password='".$password."';</br>";
+		//echo "SELECT * FROM peelPages.auth WHERE username ='".$username."' AND password='".$password."';</br>";
+		//echo "SELECT COUNT(*) FROM peelPages.auth WHERE username ='".$username."' AND password='".$password."';</br>";
 		//$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.auth WHERE username ='".$username."' AND password=".$password."';");
 		//$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.auth WHERE username ='"."han"."' AND password="."han"."';");
-		echo "nidaye</br>";
+		//echo "nidaye</br>";
 		$stmt = $mysqli -> prepare("SELECT * FROM auth WHERE username ='$username' AND password = '$password';");
 
 		$stmt->execute();
-		echo "1nidaye</br>";
+		//echo "1nidaye</br>";
 
 		$userID=null;
 		//$username1=null;
 		//$password1=null;
 		$stmt->bind_result($userID,$username1,$password1);
-		echo "caonima</br>";
+		//echo "caonima</br>";
 		//$stmt->bind_result($userID);
 		$stmt->store_result();
 
-		printf("Number of rows: %d.\n", $stmt->num_rows);
+		//printf("Number of rows: %d.\n", $stmt->num_rows);
 
-		while($stmt->fetch())printf('%s,%s,%s',$userID,$username1,$password1);	
+		while($stmt->fetch())printf('',$userID,$username1,$password1);	
 		//while($stmt->fetch())
 			//		printf('<h1>%s</h1>',$userID);	
 		if($stmt->num_rows==1)
