@@ -1,4 +1,14 @@
  <?php
+// first thing is to start session 
+session_start();
+// now to check if variable is true
+
+if(!$_SESSION['auth'])
+{
+   // header('location:login.php');
+}
+?>
+ <?php
  
  include('connectionData.txt');
  
@@ -309,6 +319,8 @@
 			
 			<!--create contact modal-->
 			<button id="myBtn" type="button" class="btn btn-info" >Add New Person</button>
+			<a class="btn btn-success" href="logout.php">Logout</a>				
+	
 			<!--create contact modal-->
 			<button id="sortName" type="button" class="btn btn-info" >Sort by Name</button>
 			<button id="sortZIP" type="button" class="btn btn-info" >Sort by ZIP</button>
