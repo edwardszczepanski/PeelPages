@@ -1,4 +1,14 @@
  <?php
+// first thing is to start session 
+session_start();
+// now to check if variable is true
+
+if(!$_SESSION['auth'])
+{
+    header('location:login.php');
+}
+?>
+ <?php
  
  include('connectionData.txt');
  
@@ -51,7 +61,8 @@
 			<form action="contacts.php" method="POST" id="sendForm" style="margin-top: 2%;" target="_blank">
 				<input class="btn btn-success" type="submit" value="Open">
 				<button id="" type="button" class="btn btn-success">Export</button>				
-				<button id="closeAll" type="button" class="btn btn-success">Close All</button>				
+				<button id="closeAll" type="button" class="btn btn-success">Close All</button>		
+<a class="btn btn-success" href="logout.php">Logout</a>				
 			</form>
           </div>
      </div>
