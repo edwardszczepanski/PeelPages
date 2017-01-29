@@ -1,10 +1,10 @@
 $(function() {
     document.getElementById("sortName").onclick = function() {
-        table = document.getElementById("myTable");
+        var table = document.getElementById("myTable");
         sortTable(table, 1, false);
     };
     document.getElementById("sortZIP").onclick = function() {
-        table = document.getElementById("myTable");
+        var table = document.getElementById("myTable");
         sortTable(table, 8, false);
     };
 
@@ -26,8 +26,10 @@ $(function() {
 
     searchIndex = 0;
     var selector = document.getElementById("sel1");
+    var myInputBox = document.getElementById("myInput");
     selector.onchange = function() {
         searchIndex = selector.selectedIndex;
+        myInputBox.placeholder = "Searching through " + selector.value + "s";
     }
 
     //create contact modal
