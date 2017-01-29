@@ -29,7 +29,7 @@ $(function() {
     var myInputBox = document.getElementById("myInput");
     selector.onchange = function() {
         searchIndex = selector.selectedIndex;
-        myInputBox.placeholder = "Search for " + selector.value;
+        myInputBox.placeholder = "Searching through " + selector.value + "s";
     }
 
     //create contact modal
