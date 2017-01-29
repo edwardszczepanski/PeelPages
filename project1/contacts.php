@@ -534,7 +534,7 @@
 
      if(ch != '' || dh != ''){
      if(ch == ''){var re = confirm(dh + 'Do you still want to save it?');}
-     if(ch !=''){var re = confirm('WARRING: You did not fill your:\n' + ch + 'Do you still want to save it?');}
+     if(ch !=''){var re = confirm('WARRING: You did not fill your:\n' + ch + dh + 'Do you still want to save it?');}
      if(re == true){
      document.getElementById("senddForm").submit();
      }else{
@@ -657,16 +657,16 @@
 
      if(ch != '' || dh != ''){
      if(ch == ''){var re = confirm(dh + 'Do you still want to save it?');}
-     if(ch !=''){var re = confirm('WARRING: You did not fill your:\n' + ch + 'Do you still want to save it?');}
+     if(ch !=''){var re = confirm('WARRING: You did not fill your:\n' + ch + dh + 'Do you still want to save it?');}
      if(re == true){
-     document.getElementById("senddForm").submit();
+     document.getElementById("sendForm").submit();
      }else{
      //alert('buhao');
      }
      
      }
      if(ch =='' && dh ==''){
-     document.getElementById("senddForm").submit();
+     document.getElementById("sendForm").submit();
      }
      }
       
