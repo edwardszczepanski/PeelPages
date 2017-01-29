@@ -33,7 +33,7 @@
           <p>Address Book Name</p>
                  
 			 
-			<select size="10" form="sendForm" name="addId" class="form-control" style="height: 240px;" required>
+			<select size="10" form="sendForm" name="addId" class="form-control" style="height: 240px;" id="abc" required>
 
  	      <?php
 			$stmt = $mysqli -> prepare("SELECT add_name, add_id FROM address");
@@ -65,24 +65,61 @@
  
  <script type="text/JavaScript"language="javascript">
  function openAction(){
+
+  if(document.getElementById("abc").value == ''){
+    document.getElementById("sendForm").target='';
+    document.getElementById("sendForm").action="index.php";
+
+    //alert("wrong");
+
+  }
+  else{
+  //alert("w");
+  document.getElementById("sendForm").target='_blank_blank';  
  	document.getElementById("sendForm").action="contacts.php";
  	document.getElementById("sendForm").submit();
+  return true;
+  }
  }
  
  </script>
 
 <script type="text/JavaScript"language="javascript">
  function exportAction(){
- 	document.getElementById("sendForm").action="export.php";
- 	document.getElementById("sendForm").submit();
+  if(document.getElementById("abc").value == ''){
+    document.getElementById("sendForm").target='';
+    document.getElementById("sendForm").action="index.php";
+
+    //alert("wrong");
+
+  }
+  else{
+  //alert("w");
+  document.getElementById("sendForm").target='_blank';  
+  document.getElementById("sendForm").action="export.php";
+  document.getElementById("sendForm").submit();
+  return true;
+  }
  }
  
  </script>
  
 <script type="text/JavaScript"language="javascript">
  function importAction(){
- 	document.getElementById("sendForm").action="import.php";
- 	document.getElementById("sendForm").submit();
+ 	if(document.getElementById("abc").value == ''){
+    document.getElementById("sendForm").target='';
+    document.getElementById("sendForm").action="index.php";
+
+    //alert("wrong");
+
+  }
+  else{
+  //alert("w");
+  document.getElementById("sendForm").target='_blank_blank';  
+  document.getElementById("sendForm").action="import.php";
+  document.getElementById("sendForm").submit();
+  return true;
+  }
  }
  
  </script>
