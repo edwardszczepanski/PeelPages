@@ -466,6 +466,7 @@
      else{
       
      var ch = "";
+     var dh = "";
      if(add_f == ''){
       ch += 'first name\n';
      }
@@ -492,10 +493,10 @@
      }
      if(add_p != ''){
      	if(((add_p.length == 7) && !(isNaN(add_p)))|| ((add_p.length == 10) && !(isNaN(add_p)))){
-     		ch += '';
+     		dh += '';
      	}
      	else{
-     		ch += 'WARRING: Your phone number is wrong!\n';
+     		dh += 'WARRING: Your phone number is wrong!\n';
      	}
      }
      
@@ -503,36 +504,37 @@
      	if(((add_z.length == 5) && !(isNaN(add_z)))|| ((add_z.length == 10))){
      		if(add_z.length == 10){
      			if(!(isNaN(add_z.slice(0,4))) && (add_z.charAt(5) == '-') && !(isNaN(add_z.slice(6,9)))){
-     				ch += '';
+     				dh += '';
      			}
      			else{
-     				ch += 'WARRING: Your zip code is wrong!\n';
+     				dh += 'WARRING: Your zip code is wrong!\n';
      			}
      		}
      		else{
-     			ch += '';
+     			dh += '';
      		}
 
      		
      	}
      	else{
-     		ch += 'WARRING: Your zip code is wrong!\n';
+     		dh += 'WARRING: Your zip code is wrong!\n';
      	}
      }
 
 
      if(add_e != ''){
      	if(add_e.indexOf('@') > -1){
-     		ch += '';
+     		dh += '';
      	}
      	else{
-     		ch += 'WARRING: Your email address is invalid\n';
+     		dh += 'WARRING: Your email address is invalid\n';
      	}
      }
 
 
-     if(ch != ''){
-     var re = confirm('WARRING: You did not fill your:\n' + ch + 'Do you still want to save it?');
+     if(ch != '' || dh != ''){
+     if(ch == ''){var re = confirm(dh + 'Do you still want to save it?');}
+     if(ch !=''){var re = confirm('WARRING: You did not fill your:\n' + ch + 'Do you still want to save it?');}
      if(re == true){
      document.getElementById("senddForm").submit();
      }else{
@@ -540,7 +542,7 @@
      }
      
      }
-     if(ch ==''){
+     if(ch =='' && dh ==''){
      document.getElementById("senddForm").submit();
      }
      }
@@ -587,6 +589,7 @@
      else{
       
      var ch = "";
+     var dh = "";
      if(edit_f == ''){
       ch += 'first name\n';
      }
@@ -613,10 +616,10 @@
      }
      if(edit_p != ''){
      	if(((edit_p.length == 7) && !(isNaN(edit_p)))|| ((edit_p.length == 10) && !(isNaN(edit_p)))){
-     		ch += '';
+     		dh += '';
      	}
      	else{
-     		ch += 'WARRING: Your phone number is wrong!\n';
+     		dh += 'WARRING: Your phone number is wrong!\n';
      	}
      }
      
@@ -624,45 +627,46 @@
      	if(((edit_z.length == 5) && !(isNaN(edit_z)))|| ((edit_z.length == 10))){
      		if(edit_z.length == 10){
      			if(!(isNaN(edit_z.slice(0,4))) && (edit_z.charAt(5) == '-') && !(isNaN(edit_z.slice(6,9)))){
-     				ch += '';
+     				dh += '';
      			}
      			else{
-     				ch += 'WARRING: Your zip code is wrong!\n';
+     				dh += 'WARRING: Your zip code is wrong!\n';
      			}
      		}
      		else{
-     			ch += '';
+     			dh += '';
      		}
 
      		
      	}
      	else{
-     		ch += 'WARRING: Your zip code is wrong!\n';
+     		dh += 'WARRING: Your zip code is wrong!\n';
      	}
      }
 
 
      if(edit_e != ''){
      	if(edit_e.indexOf('@') > -1){
-     		ch += '';
+     		dh += '';
      	}
      	else{
-     		ch += 'WARRING: Your email address is invalid\n';
+     		dh += 'WARRING: Your email address is invalid\n';
      	}
      }
 
 
-     if(ch != ''){
-     var re = confirm('WARRING: You did not fill your:\n' + ch + 'Do you still want to save it?');
+     if(ch != '' || dh != ''){
+     if(ch == ''){var re = confirm(dh + 'Do you still want to save it?');}
+     if(ch !=''){var re = confirm('WARRING: You did not fill your:\n' + ch + 'Do you still want to save it?');}
      if(re == true){
-     document.getElementById("sendForm").submit();
+     document.getElementById("senddForm").submit();
      }else{
      //alert('buhao');
      }
      
      }
-     if(ch ==''){
-     document.getElementById("sendForm").submit();
+     if(ch =='' && dh ==''){
+     document.getElementById("senddForm").submit();
      }
      }
       

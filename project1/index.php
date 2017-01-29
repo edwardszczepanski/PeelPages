@@ -46,17 +46,49 @@
 			printf('<option value="%s"><p>%s</p></option>', $r3,$r1);
   	      ?>
             </select>
+            
+            
 
 			
-			<form action="contacts.php" method="POST" id="sendForm" style="margin-top: 2%;" target="_blank">
-				<input class="btn btn-success" type="submit" value="Open">
-				<button id="" type="button" class="btn btn-success">Export</button>				
-				<button id="closeAll" type="button" class="btn btn-success">Close All</button>				
+			<form  method="POST" id="sendForm" style="margin-top: 2%;" target="_blank">
+				<input class="btn btn-success" type="submit" value="Open" onClick="openAction()">
+				<button id="" type="button" class="btn btn-success">Add New Address book</button>
+				<button id="closeAll" type="button" class="btn btn-success">Close All</button>
+				<input class="btn btn-info" type="submit" value="Export" style="float: right;" onClick="exportAction()">
+				<input class="btn btn-info" type="submit" value="Import" style="float: right; margin-right: 10px;" onClick="importAction()">				
 			</form>
+
           </div>
      </div>
      <div>
      </div>
+ 
+ <script type="text/JavaScript"language="javascript">
+ function openAction(){
+ 	document.getElementById("sendForm").action="contacts.php";
+ 	document.getElementById("sendForm").submit();
+ }
+ 
+ </script>
+
+<script type="text/JavaScript"language="javascript">
+ function exportAction(){
+ 	document.getElementById("sendForm").action="export.php";
+ 	document.getElementById("sendForm").submit();
+ }
+ 
+ </script>
+ 
+<script type="text/JavaScript"language="javascript">
+ function importAction(){
+ 	document.getElementById("sendForm").action="import.php";
+ 	document.getElementById("sendForm").submit();
+ }
+ 
+ </script>
+ 
+ 
+ 
  </body>
      <script src="./js/demo.js"></script>
      <script src="./js/bootstrap.min.js"></script>
