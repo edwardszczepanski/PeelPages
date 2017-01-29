@@ -24,6 +24,12 @@ $(function() {
         }
     });
 
+    searchIndex = 0;
+    var selector = document.getElementById("sel1");
+    selector.onchange = function() {
+        searchIndex = selector.selectedIndex;
+    }
+
     //create contact modal
     // Get the modal
     var modal = document.getElementById('myModal');
@@ -207,7 +213,8 @@ function myFunction() {
 
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
+        //td = tr[i].getElementsByTagName("td")[0];
+        td = tr[i].getElementsByTagName("td")[searchIndex];
         if (td) {
             if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
                 tr[i].style.display = "";
