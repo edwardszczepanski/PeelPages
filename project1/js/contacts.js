@@ -133,28 +133,14 @@ $(function() {
 });
 
 global_col = -1;
-function sortTable(table, col, reverse) {
+checkingFirstName = false;
+function sortTable(table, col) {
     // 1 and 8
     var tb = table.tBodies[0];
     var tr = Array.prototype.slice.call(tb.rows, 0);
     var i;
     global_col = col;
-
     tr = tr.sort(compare);
-        /*
-        function(a, b) { // sort rows
-        first = a.cells[col].textContent.trim();
-        second = b.cells[col].textContent.trim();
-        if(first == "" && second == ""){
-            return 0;
-        }else if(first == ""){
-            return 1;
-        }else if (second == ""){
-            return -1;
-        }
-        return first.localeCompare(second);
-    });
-    */
     for (i = 0; i < tr.length; ++i){
         tb.appendChild(tr[i]);
     }
@@ -162,8 +148,16 @@ function sortTable(table, col, reverse) {
 
 function compare(a, b){
     col = global_col;
+    if(checkingFirstName == true){
+        col = 0;
+    }
     first = a.cells[col].textContent.trim();
     second = b.cells[col].textContent.trim();
+    if(first == second && checkingFirstName == false){
+        checkingFirstName = true;
+        return compare(a, b);
+    }
+    checkingFirstName = false;
     if(first == "" && second == ""){
         return 0;
     }else if(first == ""){
