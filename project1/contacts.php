@@ -1,4 +1,14 @@
  <?php
+// first thing is to start session 
+session_start();
+// now to check if variable is true
+
+if(!$_SESSION['auth'])
+{
+   // header('location:login.php');
+}
+?>
+ <?php
  
  include('connectionData.txt');
  
@@ -143,6 +153,21 @@
 			?>
 			</h2>
            <p>Find your contacts here!</p>            
+            <div class="form-group">
+          <label for="sel1">Search Address Book:</label>
+          <select class="form-control" id="sel1">
+            <option>First Name</option>
+            <option>Last Name</option>
+            <option>Phone</option>
+            <option>Email</option>
+            <option>Address1</option>
+            <option>Address2</option>
+            <option>City</option>
+            <option>State</option>
+            <option>Zip Code</option>
+          </select>
+            <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Searching through First Names">
+            </div>
            <table id="myTable" class="table" >
              <thead>
                <tr>
@@ -309,9 +334,11 @@
 			
 			<!--create contact modal-->
 			<button id="myBtn" type="button" class="btn btn-info" >Add New Person</button>
+	
 			<!--create contact modal-->
 			<button id="sortName" type="button" class="btn btn-info" >Sort by Name</button>
 			<button id="sortZIP" type="button" class="btn btn-info" >Sort by ZIP</button>
+			<a class="btn btn-success" href="logout.php">Logout</a>				
 
             <div id="myModal" class="modal">
             
