@@ -460,15 +460,6 @@ if(!$_SESSION['auth'])
  
  <script type="text/JavaScript"language="javascript">
    function check(){
-   
-   //document.getElementById("senddForm").submit();
-     //var su = document.getElementById("sendForm");
-     //su.action="contacts.php";
-     
-     //su.method="POST";
-     //su.submit();
-     //alert('ddd');     
-     
      var add_f =document.getElementById('add_fName').value;
      var add_l =document.getElementById('add_lName').value;
      var add_p =document.getElementById('add_phone').value;
@@ -481,7 +472,6 @@ if(!$_SESSION['auth'])
 
      if(((add_f == '') && (add_l == '')) || ((add_p == '') && (add_a1 == '') && (add_a2 == '')
      && (add_c == '') && (add_s == '') && (add_z == ''))){
-     		//alert("ddd");
      		if((add_f == '') && (add_l == '')){
      		alert("Please enter at least your first name or last name!");
      		}
@@ -574,24 +564,12 @@ if(!$_SESSION['auth'])
      }
      }
       
-     
-           
-     
    }
 </script>
 
 
 <script type="text/JavaScript"language="javascript">
    function checkk(){
-   
-   //document.getElementById("senddForm").submit();
-     //var su = document.getElementById("sendForm");
-     //su.action="contacts.php";
-     
-     //su.method="POST";
-     //su.submit();
-     //alert('ddd');     
-     
      var edit_f =document.getElementById('edit_fn').value;
      var edit_l =document.getElementById('edit_ln').value;
      var edit_p =document.getElementById('edit_ph').value;
@@ -604,7 +582,6 @@ if(!$_SESSION['auth'])
 
      if(((edit_f == '') && (edit_l == '')) || ((edit_p == '') && (edit_a1 == '') && (edit_a2 == '')
      && (edit_c == '') && (edit_s == '') && (edit_z == ''))){
-     		//alert("ddd");
      		if((edit_f == '') && (edit_l == '')){
      		alert("Please enter at least your first name or last name!");
      		}
