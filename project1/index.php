@@ -84,7 +84,7 @@ if(!$_SESSION['auth'])
           <p>Address Book Name</p>
                  
 			 
-			<select size="10" form="sendForm" name="addId" class="form-control" style="height: 240px;" required>
+			<select size="10" form="sendForm" name="addId" class="form-control" style="height: 240px;" id="abc" required>
 
  	      <?php
 			$stmt = $mysqli -> prepare("SELECT add_name, add_id FROM address");
@@ -97,8 +97,10 @@ if(!$_SESSION['auth'])
 			printf('<option value="%s"><p>%s</p></option>', $r3,$r1);
   	      ?>
             </select>
+            
+            
 
-			
+
 			<form action="contacts.php" method="POST" id="sendForm" style="margin-top: 2%;" target="_blank">
 				<input class="btn btn-success" type="submit" value="Open">
 				 <!--create contact modal-->
@@ -163,6 +165,59 @@ if(!$_SESSION['auth'])
      </div>
      <div>
      </div>
+ 
+ <script type="text/JavaScript"language="javascript">
+ function openAction(){
+
+  if(document.getElementById("abc").value == ''){
+    document.getElementById("sendForm").target='';
+    document.getElementById("sendForm").action="index.php";
+
+    //alert("wrong");
+
+  }
+  else{
+  //alert("w");
+  document.getElementById("sendForm").target='_blank';  
+ 	document.getElementById("sendForm").action="contacts.php";
+ 	document.getElementById("sendForm").submit();
+  }
+ }
+ 
+ </script>
+
+<script type="text/JavaScript"language="javascript">
+ function exportAction(){
+  if(document.getElementById("abc").value == ''){
+    document.getElementById("sendForm").target='';
+    document.getElementById("sendForm").action="index.php";
+
+    //alert("wrong");
+
+  }
+  else{
+  //alert("w");
+  document.getElementById("sendForm").target='_blank';  
+  document.getElementById("sendForm").action="export.php";
+  document.getElementById("sendForm").submit();
+  }
+ }
+ 
+ </script>
+ 
+<script type="text/JavaScript"language="javascript">
+ function importAction(){
+
+  document.getElementById("sendForm").target='_blank';  
+  document.getElementById("sendForm").action="import.php";
+  document.getElementById("sendForm").submit();
+  
+ }
+ 
+ </script>
+ 
+ 
+ 
  </body>
      <script src="./js/demo.js"></script>
      <script src="./js/bootstrap.min.js"></script>
