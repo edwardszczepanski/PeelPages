@@ -153,6 +153,21 @@ if(!$_SESSION['auth'])
 			?>
 			</h2>
            <p>Find your contacts here!</p>            
+            <div class="form-group">
+          <label for="sel1">Search Address Book:</label>
+          <select class="form-control" id="sel1">
+            <option>First Name</option>
+            <option>Last Name</option>
+            <option>Phone</option>
+            <option>Email</option>
+            <option>Address1</option>
+            <option>Address2</option>
+            <option>City</option>
+            <option>State</option>
+            <option>Zip Code</option>
+          </select>
+            <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Searching through First Names">
+            </div>
            <table id="myTable" class="table" >
              <thead>
                <tr>

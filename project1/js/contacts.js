@@ -30,6 +30,9 @@ $(function() {
     selector.onchange = function() {
         searchIndex = selector.selectedIndex;
         myInputBox.placeholder = "Searching through " + selector.value + "s";
+        if(selector.value == "City"){
+            myInputBox.placeholder = "Searching through Cities";
+        }
     }
 
     //create contact modal
