@@ -105,9 +105,10 @@ if(!$_SESSION['auth'])
 				<input class="btn btn-success" type="submit" value="Open">
 				 <!--create contact modal-->
 				<button id="add_addr_myBtn" type="button" class="btn btn-success" onclick="pop_add_addr()">New</button>
-				<button id="" type="button" class="btn btn-success">Export</button>				
 				<button id="closeAll" type="button" class="btn btn-success">Close All</button>		
-				<a class="btn btn-success" href="logout.php">Logout</a>				
+                <a class="btn btn-success" href="logout.php">Logout</a>
+                <input class="btn btn-info" type="submit" value="Export" style="float: right;" onClick="exportAction()">
+                <input class="btn btn-info" type="submit" value="Import" style="float: right; margin-right: 10px;" onClick="importAction()">                
 			</form>
 			
 			
