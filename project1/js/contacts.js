@@ -1,11 +1,11 @@
 $(function() {
     document.getElementById("sortName").onclick = function() {
         var table = document.getElementById("myTable");
-        sortTable(table, 1, false);
+        sortTable(table, 1);
     };
     document.getElementById("sortZIP").onclick = function() {
         var table = document.getElementById("myTable");
-        sortTable(table, 8, false);
+        sortTable(table, 8);
     };
 
     $("input:checkbox").on('click', function() {
@@ -30,6 +30,9 @@ $(function() {
     selector.onchange = function() {
         searchIndex = selector.selectedIndex;
         myInputBox.placeholder = "Searching through " + selector.value + "s";
+        if(selector.value == "City"){
+            myInputBox.placeholder = "Searching through Cities";
+        }
     }
 
     //create contact modal
@@ -129,19 +132,40 @@ $(function() {
     });
 });
 
-function sortTable(table, col, reverse) {
+global_col = -1;
+checkingFirstName = false;
+function sortTable(table, col) {
+    // 1 and 8
     var tb = table.tBodies[0];
     var tr = Array.prototype.slice.call(tb.rows, 0);
     var i;
-    reverse = -((+reverse) || -1);
-    tr = tr.sort(function(a, b) { // sort rows
-        return reverse // `-1 *` if want opposite order
-            *
-            (a.cells[col].textContent.trim() // using `.textContent.trim()` for test
-                .localeCompare(b.cells[col].textContent.trim())
-            );
-    });
-    for (i = 0; i < tr.length; ++i) tb.appendChild(tr[i]); // append each row in order
+    global_col = col;
+    tr = tr.sort(compare);
+    for (i = 0; i < tr.length; ++i){
+        tb.appendChild(tr[i]);
+    }
+}
+
+function compare(a, b){
+    col = global_col;
+    if(checkingFirstName == true){
+        col = 0;
+    }
+    first = a.cells[col].textContent.trim();
+    second = b.cells[col].textContent.trim();
+    if(first == second && checkingFirstName == false){
+        checkingFirstName = true;
+        return compare(a, b);
+    }
+    checkingFirstName = false;
+    if(first == "" && second == ""){
+        return 0;
+    }else if(first == ""){
+        return 1;
+    }else if (second == ""){
+        return -1;
+    }
+    return first.localeCompare(second);
 }
 
 //edit contact modal
