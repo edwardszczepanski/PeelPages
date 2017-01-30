@@ -101,8 +101,8 @@ if(!$_SESSION['auth'])
             
 
 
-			<form method="POST" id="sendForm" style="margin-top: 2%;" target="_blank">
-				<input class="btn btn-success" type="submit" value="Open" onClick="openAction()">
+			<form action="contacts.php" method="POST" id="sendForm" style="margin-top: 2%;" target="_blank">
+				<input class="btn btn-success" type="submit" value="Open" onClick="openAction">
 				 <!--create contact modal-->
 				<button id="add_addr_myBtn" type="button" class="btn btn-success" onclick="pop_add_addr()">New</button>
 				<button id="closeAll" type="button" class="btn btn-success">Close All</button>		
