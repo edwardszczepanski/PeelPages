@@ -75,10 +75,9 @@
   }
   else{
   //alert("w");
-  document.getElementById("sendForm").target='_blank_blank';  
+  document.getElementById("sendForm").target='_blank';  
  	document.getElementById("sendForm").action="contacts.php";
  	document.getElementById("sendForm").submit();
-  return true;
   }
  }
  
@@ -98,7 +97,6 @@
   document.getElementById("sendForm").target='_blank';  
   document.getElementById("sendForm").action="export.php";
   document.getElementById("sendForm").submit();
-  return true;
   }
  }
  
@@ -106,20 +104,11 @@
  
 <script type="text/JavaScript"language="javascript">
  function importAction(){
- 	if(document.getElementById("abc").value == ''){
-    document.getElementById("sendForm").target='';
-    document.getElementById("sendForm").action="index.php";
 
-    //alert("wrong");
-
-  }
-  else{
-  //alert("w");
-  document.getElementById("sendForm").target='_blank_blank';  
+  document.getElementById("sendForm").target='_blank';  
   document.getElementById("sendForm").action="import.php";
   document.getElementById("sendForm").submit();
-  return true;
-  }
+  
  }
  
  </script>
