@@ -32,7 +32,7 @@ if(!$_SESSION['auth'])
          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
  </head>
 
- <body>
+ <body    >
 <?php
 		
 	$add_fName = $_POST['add_fName'];			
