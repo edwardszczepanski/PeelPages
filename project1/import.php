@@ -1,23 +1,41 @@
 <html>
+<head>
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="icon" href="./assets/favicon.jpg">
+     <title>PeelPages</title>
+         <link href="./css/bootstrap.min.css" rel="stylesheet">
+         <link rel="stylesheet" href="css/styles.css"> 
+         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+ </head>
+
+ <body>
+ <div class="container" style="margin-left: 30%;margin-top: 5%;">
 <div style="position:relative;">
 <form action="import.php" method="POST" id="importform" style="margin-top: 2%;" enctype="multipart/form-data">
 
 <a href="#" >Please Click to open a .tsv file and type a name for a new address book, then click save!</a>
 <div>
-<input type="text" value="" style="float: left;" name="aname">
+<input type="text" value="" style="float: left;" name="aname" required>
 <input type='file' style="opacity:0;filter:alpha(opactiy=0);position:absolute;top:0;left:0;width:200px;height:20px;cursor:pointer;" id = "input" name = "input" style="float: left; margin-left: 25px;">
-<input class="btn btn-success" type="submit" value="Save" style="float: left; margin-left: 25px;">
+<input class="btn btn-success" type="submit" value="Save" style="float: left; margin-left: 25px;" >
 </div>
 </form>
 </div>
-
+</div>
+</body>
 
 <?php
 	include('connectionData.txt');
 	//echo$_FILES["input"]["error"];
 	//echo$_FILES["input"]["tmp_name"];
-	if ($_FILES["input"]["error"] <= 0 && isset($_POST['aname']))
+	$aname = $_POST['aname'];
+	if ($_FILES["input"]["error"] <= 0 && $aname != '')
 	{
 		$con = mysqli_connect($server, $user, $pass, $dbname, $port);
 		//echo$server;
@@ -50,8 +68,13 @@
 			$i++;
 		}
 		fclose($file);
-		echo"gongxifacai!";
+		echo"Import file successful!";
 	}
+	if($_FILES["input"]["error"] > 0)
+	{
+		echo"Please choose a .tsv file!";
+	}
+
 ?>
 
 </html>
