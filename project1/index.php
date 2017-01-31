@@ -70,13 +70,7 @@ if(!$_SESSION['auth'])
  
  
  
- 
- 
      <div>
-         <!--button id="second" type="button" class="btn btn-danger">Quit App</button>
-         <button id="second" type="button" class="btn btn-danger">New Address Book</button>
-         <button id="second" type="button" class="btn btn-danger">Import</button-->
- 
  
          <div class="container">
            <h2>Address Books</h2>
@@ -105,14 +99,12 @@ if(!$_SESSION['auth'])
 				<input class="btn btn-success" type="submit" value="Open" onClick="openAction()">
 				 <!--create contact modal-->
 				<button id="add_addr_myBtn" type="button" class="btn btn-success" onclick="pop_add_addr()">New</button>
-				<button id="closeAll" type="button" class="btn btn-success">Close All</button>		
                 <a class="btn btn-success" href="logout.php">Logout</a>
                 <input class="btn btn-info" type="submit" value="Export" style="float: right;" onClick="exportAction()">
                 <input class="btn btn-info" type="submit" value="Import" style="float: right; margin-right: 10px;" onClick="importAction()">                
 			</form>
 			
 			
-         
 	
             <div id="add_addr_myModal" class="modal">
             
@@ -173,9 +165,6 @@ if(!$_SESSION['auth'])
   if(document.getElementById("abc").value == ''){
     document.getElementById("sendForm").target='';
     document.getElementById("sendForm").action="index.php";
-
-    //alert("wrong");
-
   }
   else{
   //alert("w");
@@ -251,7 +240,6 @@ if(!$_SESSION['auth'])
 		add_addr_no_btn.onclick = function() {
 			add_addr_modal.style.display = "none";
 		}
-
 	}
 	
 	</script>

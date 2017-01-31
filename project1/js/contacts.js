@@ -1,4 +1,6 @@
 $(function() {
+    document.title = document.getElementById('titleh2').innerHTML.split(':')[1];
+
     document.getElementById("sortName").onclick = function() {
         var table = document.getElementById("myTable");
         sortTable(table, 1);

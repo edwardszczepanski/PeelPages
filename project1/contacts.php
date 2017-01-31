@@ -141,7 +141,7 @@ if(!$_SESSION['auth'])
 
  
          <div class="container">
-           <h2>Address Books: 
+           <h2 id="titleh2">Address Books: 
 		   <?php
 				$addId = $_POST['addId'];
 				$stmt = $mysqli -> prepare("SELECT add_name FROM address WHERE add_id =".$addId);
@@ -680,7 +680,6 @@ if(!$_SESSION['auth'])
    }
 </script>
  
-</script-->
      <script src="./js/contacts.js"></script>
      <script src="./js/bootstrap.min.js"></script>
 	 <script >
