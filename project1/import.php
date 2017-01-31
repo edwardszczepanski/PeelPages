@@ -1,5 +1,21 @@
 <html>
+<head>
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="icon" href="./assets/favicon.jpg">
+     <title>PeelPages</title>
+         <link href="./css/bootstrap.min.css" rel="stylesheet">
+         <link rel="stylesheet" href="css/styles.css"> 
+         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+ </head>
+
+ <body>
+ <div class="container" style="margin-left: 30%;margin-top: 5%;">
 <div style="position:relative;">
 <form action="import.php" method="POST" id="importform" style="margin-top: 2%;" enctype="multipart/form-data">
 
@@ -11,7 +27,8 @@
 </div>
 </form>
 </div>
-
+</div>
+</body>
 
 <?php
 	include('connectionData.txt');
