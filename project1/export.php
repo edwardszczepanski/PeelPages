@@ -3,6 +3,15 @@ include('connectionData.txt');
 $mysqli = new mysqli($server, $user, $pass, $dbname, $port)
 or die('Error connecting');
 ?>
+<?php
+				$addId = $_POST['addId'];           
+                $stmt = $mysqli -> prepare("SELECT add_name FROM address WHERE add_id =".$addId);
+                $stmt->execute();
+                $r1=NULL;
+                $stmt->bind_result($r1);
+                while($stmt->fetch());
+                $r2=$r1;
+?>
 <?php                
                 $s_city='CITY';
                 $s_state='STATE';
@@ -26,7 +35,7 @@ or die('Error connecting');
                 $zip=null;
                 $contact_id=null;
                 $stmt->bind_result($fname,$lname,$addr1,$addr2,$phone_num,$e_address,$city,$state,$zip,$contact_id);
-                $filename = 'Please change a name.tsv';
+                $filename = $r2.'.tsv';
                 header("Content-Type: application/octet-stream");
                 header('Content-Disposition: attachment; filename="' . $filename . '"');
                 echo$s_city."\t".$s_state."\t".$s_zip."\t".$s_add1."\t".$s_add2."\t".$s_lname."\t".$s_fname."\t".$s_phone."\n";

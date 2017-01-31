@@ -5,9 +5,9 @@
 
 <a href="#" >Please Click to open a .tsv file and type a name for a new address book, then click save!</a>
 <div>
-<input type="text" value="" style="float: left;" name="aname">
+<input type="text" value="" style="float: left;" name="aname" required>
 <input type='file' style="opacity:0;filter:alpha(opactiy=0);position:absolute;top:0;left:0;width:200px;height:20px;cursor:pointer;" id = "input" name = "input" style="float: left; margin-left: 25px;">
-<input class="btn btn-success" type="submit" value="Save" style="float: left; margin-left: 25px;">
+<input class="btn btn-success" type="submit" value="Save" style="float: left; margin-left: 25px;" >
 </div>
 </form>
 </div>
@@ -17,7 +17,8 @@
 	include('connectionData.txt');
 	//echo$_FILES["input"]["error"];
 	//echo$_FILES["input"]["tmp_name"];
-	if ($_FILES["input"]["error"] <= 0 && isset($_POST['aname']))
+	$aname = $_POST['aname'];
+	if ($_FILES["input"]["error"] <= 0 && $aname != '')
 	{
 		$con = mysqli_connect($server, $user, $pass, $dbname, $port);
 		//echo$server;
@@ -50,8 +51,13 @@
 			$i++;
 		}
 		fclose($file);
-		echo"gongxifacai!";
+		echo"Import file successful!";
 	}
+	if($_FILES["input"]["error"] > 0)
+	{
+		echo"Please choose a .tsv file!";
+	}
+
 ?>
 
 </html>
