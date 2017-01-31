@@ -21,7 +21,7 @@
 </head>
 
 <body>
-<div class="container" style="margin-left:auto; margin-right:auto;">
+<div class="container" style="    margin-left: 37%;">
 
 	<?php
 	$username=$_POST['username'];
@@ -49,7 +49,7 @@
 	}
 	?>
 
-	<form style="margin-top:60px;" method="POST">
+	<form style="margin-top:130px;" method="POST">
 		<table>
 		<tr>
 			<td>

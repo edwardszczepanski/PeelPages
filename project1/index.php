@@ -33,8 +33,20 @@ if(!$_SESSION['auth'])
 
  <body>
  <?php
-		
+	$del_addr_Id = $_POST['del_addr_Id'];			
+	$del_addr_flag = $_POST['del_addr_flag'];		
+	//echo "addr ID->".$del_addr_Id."<-addr flag->".$del_addr_flag."<-<br>";	
 	$addr_name = $_POST['addr_name'];			
+	
+	if($del_addr_flag == 1){
+		$stmt = $mysqli -> prepare("DELETE FROM peelPages.address WHERE add_id ='".$del_addr_Id."';");
+		//echo "</br>DELETE FROM peelPages.address WHERE add_id ='".$del_addr_Id."';";
+		//$stmt = $mysqli -> prepare("SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName =".$add_fName." AND c.lName =".$add_lName." AND (c.address = '".$add_address."' OR c.address IS NULL);");
+
+		$stmt->execute();
+	
+	}
+	
 	//echo "SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName ='".$add_fName."' AND c.lName ='".$add_lName."' AND c.address = '".$add_address."' AND c.e_address ='".$add_email ."' AND c.phone_num ='". $add_phone."' AND c.city ='".$add_city."' AND c.state ='".$add_state."' AND c.zip ='". $add_zip."';";
 	
 	if(isset($addr_name) && !empty($addr_name) ){	
@@ -70,7 +82,6 @@ if(!$_SESSION['auth'])
  
  
  
-     <div>
  
          <div class="container">
            <h2>Address Books</h2>
@@ -90,22 +101,41 @@ if(!$_SESSION['auth'])
 			while($stmt->fetch())
 			printf('<option value="%s"><p>%s</p></option>', $r3,$r1);
   	      ?>
-            </select>
-            
-            
+            </select>                      
 
 
 			<form method="POST" id="sendForm" style="margin-top: 2%;" target="_blank">
 				<input class="btn btn-success" type="submit" value="Open" onClick="openAction()">
-				 <!--create contact modal-->
 				<button id="add_addr_myBtn" type="button" class="btn btn-success" onclick="pop_add_addr()">New</button>
+				<button id="delete_addr_contact" type="button" class="btn btn-danger" onclick="pop_delete()">Delete</button>
                 <a class="btn btn-success" href="logout.php">Logout</a>
                 <input class="btn btn-info" type="submit" value="Export" style="float: right;" onClick="exportAction()">
                 <input class="btn btn-info" type="submit" value="Import" style="float: right; margin-right: 10px;" onClick="importAction()">                
 			</form>
 			
 			
-	
+			<!--delete contact modal-->
+			<!-- Modal content -->
+			<div id="delete_addr_myModal" class="modal">
+				<div class="modal-content">
+				<span class="close">&times;</span>
+				<h3>Do you want to delete <span class="delete_addr_label" id="delete_addr_label"></span></h3>
+				<form action="index.php" method="POST" id="sendForm" style="margin-top: 2%;">	
+					
+					<!--<input style="width: 50px;display: none;" type="text" name="addId" value="<?php echo $addId;?>">-->
+					<input style="width: 50px; display: none;" type="text" name="del_addr_Id" id="del_addr_Id">		
+				
+					<input class="btn btn-success" type="submit" value="Yes" style="float: right;">
+					<button type="button" class="btn btn-success" id="delete_addr_modal_no" style="float: right; margin-right: 20px;" >No</button>
+
+					<input style="width: 20px; display: none;"type="text" name="del_addr_flag" id="del_addr_flag">		
+
+				
+				</form> 
+					 
+				</div>
+			</div>	
+			
             <div id="add_addr_myModal" class="modal">
             
             <!-- Modal content -->
@@ -155,10 +185,8 @@ if(!$_SESSION['auth'])
 		  
 		  
 		  </div>
-     </div>
-     <div>
-     </div>
- 
+     
+   
  <script type="text/JavaScript"language="javascript">
  function openAction(){
 
@@ -212,14 +240,14 @@ if(!$_SESSION['auth'])
      <script src="./js/demo.js"></script>
      <script src="./js/bootstrap.min.js"></script>
 	 <script >
-	 //delete contact modal
+	 //add address modal
 	function pop_add_addr() {	
 		// Get the modal
 		var add_addr_modal = document.getElementById('add_addr_myModal');
 		// Get the button that opens the modal
 		var add_addr_btn = document.getElementById("add_addr_myBtn");
 		// Get the <span> element that closes the modal
-		var add_addr_span = document.getElementsByClassName("close")[0];
+		var add_addr_span = document.getElementsByClassName("close")[1];
 		// When the user clicks the button, open the modal
 		//edit_btn.onclick = function() {
 		add_addr_modal.style.display = "block";
@@ -240,6 +268,56 @@ if(!$_SESSION['auth'])
 		add_addr_no_btn.onclick = function() {
 			add_addr_modal.style.display = "none";
 		}
+	}
+	
+	 //delete contact modal
+	function pop_delete() {	
+		if(document.getElementById('abc').value != ""){
+		// Get the modal
+		var delete_addr_modal = document.getElementById('delete_addr_myModal');
+		// Get the button that opens the modal
+		var delete_addr_btn = document.getElementById("delete_addr_contact");
+		// Get the <span> element that closes the modal
+		var delete_addr_span = document.getElementsByClassName("close")[0];
+		// When the user clicks the button, open the modal
+		//edit_btn.onclick = function() {
+		delete_addr_modal.style.display = "block";
+		
+		var delete_addr_flag = document.getElementById("del_addr_flag");
+		delete_addr_flag.value="1";
+		
+		//}
+		// When the user clicks on <span> (x), close the modal
+		delete_addr_span.onclick = function() {
+			delete_addr_modal.style.display = "none";
+			delete_addr_flag.value="0";
+			$(del_addr_Id).val("");
+		}
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+		if (event.target == delete_addr_modal) {
+			delete_addr_modal.style.display = "none";
+			delete_addr_flag.value="0";
+			$(del_addr_Id).val("");
+		}
+		}	
+		//when click no
+		var delete_addr_no_btn = document.getElementById("delete_addr_modal_no");
+		delete_addr_no_btn.onclick = function() {
+			delete_addr_modal.style.display = "none";
+			delete_addr_flag.value="0";
+			$(del_addr_Id).val("");
+		}
+		
+		var getSelection = document.getElementById("abc");
+		var getOptionTxt = getSelection.options[getSelection.selectedIndex].text;
+		var getOptionVal = getSelection.options[getSelection.selectedIndex].value;
+		$(delete_addr_label).text(getOptionTxt);
+        $(del_addr_Id).val(getOptionVal);
+		}else{
+     		alert("Please select one address book to delete!");
+		}
+
 	}
 	
 	</script>
