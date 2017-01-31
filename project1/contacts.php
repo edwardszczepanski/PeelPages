@@ -48,7 +48,7 @@ if(!$_SESSION['auth'])
 	//echo "cao addID--->".$addId."</br>";
 	if($addId==null)
 	{
-		header("Location: index.php");
+		header("Location: http://ix.cs.uoregon.edu/~wang18/CIS422Team1/project1/index.php");
 		exit();
 	}	
 	//echo "SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName ='".$add_fName."' AND c.lName ='".$add_lName."' AND c.address = '".$add_address."' AND c.e_address ='".$add_email ."' AND c.phone_num ='". $add_phone."' AND c.city ='".$add_city."' AND c.state ='".$add_state."' AND c.zip ='". $add_zip."';";
@@ -95,7 +95,7 @@ if(!$_SESSION['auth'])
 	//echo "cao addID--->".$addId."</br>";
 	if($addId==null)
 	{
-		header("Location: index.php");
+		header("Location: http://ix.cs.uoregon.edu/~wang18/CIS422Team1/project1/index.php");
 		exit();
 	}	
 	//echo "SELECT COUNT(*) FROM peelPages.contact c WHERE c.fName ='".$add_fName."' AND c.lName ='".$add_lName."' AND c.address = '".$add_address."' AND c.e_address ='".$add_email ."' AND c.phone_num ='". $add_phone."' AND c.city ='".$add_city."' AND c.state ='".$add_state."' AND c.zip ='". $add_zip."';";

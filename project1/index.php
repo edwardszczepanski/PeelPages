@@ -142,7 +142,7 @@ if(!$_SESSION['auth'])
             <div class="modal-content" style="height: 270px; width: 570px;">
             <span id="add_close" class="close">&times;</span>
             <h3>Please fill information</h3>
-            <form action="index.php" method="POST" id="senddForm" style="margin-top: 2%;">	
+            <form action="" method="POST" id="senddForm" style="margin-top: 2%;">	
             	<table class="addContact">
                 <tr>
                 <td>
