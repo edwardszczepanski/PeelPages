@@ -68,11 +68,12 @@
 			$i++;
 		}
 		fclose($file);
-		echo"Import file successful!";
+		echo"<script language=javascript>alert('Import Successful!');</script>";
 	}
 	if($_FILES["input"]["error"] > 0)
 	{
-		echo"Please choose a .tsv file!";
+		//echo"alert('Please choose a .tsv file!')";
+		echo"<script language=javascript>alert('Please choose a .tsv file!');</script>";
 	}
 
 ?>
