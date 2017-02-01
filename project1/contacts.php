@@ -109,7 +109,7 @@ or die('Error connecting');
 
      <div>
          <div class="container">
-         <h2 id="titleh2">Address Books: 
+         <h2 id="titleh2">Address Book: 
 		 <?php
 				$addId = $_POST['addId'];
 				$stmt = $mysqli -> prepare("SELECT add_name FROM address WHERE add_id =".$addId);
