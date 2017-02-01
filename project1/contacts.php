@@ -409,6 +409,7 @@ or die('Error connecting');
  <script type="text/JavaScript"language="javascript">
    //validate the information input in add new contact modal by user
    function check(){
+     // Get the typed information
      var add_f =document.getElementById('add_fName').value;
      var add_l =document.getElementById('add_lName').value;
      var add_p =document.getElementById('add_phone').value;
@@ -418,7 +419,8 @@ or die('Error connecting');
      var add_s =document.getElementById('add_state').value;
      var add_z =document.getElementById('add_zip').value;
      var add_e =document.getElementById('add_email').value;
-
+     // Check the user fill at least last name or first name
+     // Check the user fill at least one address information
      if(((add_f == '') && (add_l == '')) || ((add_p == '') && (add_a1 == '') && (add_a2 == '')
      && (add_c == '') && (add_s == '') && (add_z == ''))){
      		if((add_f == '') && (add_l == '')){
@@ -429,8 +431,11 @@ or die('Error connecting');
      		}
      }     
      else{
+     // Store the filed's name that user not fill out
      var ch = "";
+     // Store the invalid information that user filled
      var dh = "";
+     // Check user fill these information or not
      if(add_f == ''){
       ch += 'first name\n';
      }
@@ -456,6 +461,7 @@ or die('Error connecting');
       ch += 'zip\n';
      }
      if(add_p != ''){
+     	// Check user fill out a valid phone number
      	if(((add_p.length == 7) && !(isNaN(add_p)))|| ((add_p.length == 10) && !(isNaN(add_p)))){
      		dh += '';
      	}
@@ -464,6 +470,7 @@ or die('Error connecting');
      	}
      }     
      if(add_z != ''){
+     	// Check user fill out a valid zip code
      	if(((add_z.length == 5) && !(isNaN(add_z)))|| ((add_z.length == 10))){
      		if(add_z.length == 10){
      			if(!(isNaN(add_z.slice(0,4))) && (add_z.charAt(5) == '-') && !(isNaN(add_z.slice(6,9)))){
@@ -481,6 +488,7 @@ or die('Error connecting');
      		dh += 'WARRING: Your zip code is wrong!\n';
      	}
      }
+     // Check user fill out a valid e-mail address
      if(add_e != ''){
      	if(add_e.indexOf('@') > -1){
      		dh += '';
@@ -489,14 +497,20 @@ or die('Error connecting');
      		dh += 'WARRING: Your email address is invalid\n';
      	}
      }
+     // Check warrning information
      if(ch != '' || dh != ''){
+     // This case user fill out all information
      if(ch == ''){var re = confirm(dh + 'Do you still want to save it?');}
+     // This case user not fill out all information
      if(ch !=''){var re = confirm('WARRING: You did not fill your:\n' + ch + dh + 'Do you still want to save it?');}
+     // Click yes to save the information
      if(re == true){
      document.getElementById("senddForm").submit();
+     // Click no would not save the information
      }else{
      }
      }
+     // User fill out all things are correct
      if(ch =='' && dh ==''){
      document.getElementById("senddForm").submit();
      }
@@ -506,6 +520,7 @@ or die('Error connecting');
 <script type="text/JavaScript"language="javascript">
     //validate the information input in edit contact modal by user
    function checkk(){
+     // Get the typed information
      var edit_f =document.getElementById('edit_fn').value;
      var edit_l =document.getElementById('edit_ln').value;
      var edit_p =document.getElementById('edit_ph').value;
@@ -515,7 +530,8 @@ or die('Error connecting');
      var edit_s =document.getElementById('edit_st').value;
      var edit_z =document.getElementById('edit_zi').value;
      var edit_e =document.getElementById('edit_em').value;
-
+     // Check the user fill at least last name or first name
+     // Check the user fill at least one address information
      if(((edit_f == '') && (edit_l == '')) || ((edit_p == '') && (edit_a1 == '') && (edit_a2 == '')
      && (edit_c == '') && (edit_s == '') && (edit_z == ''))){
      		if((edit_f == '') && (edit_l == '')){
@@ -525,9 +541,12 @@ or die('Error connecting');
      		alert("Please enter at least one address information!");
      		}
      }     
-     else{      
+     else{
+     // Store the filed's name that user not fill out	
      var ch = "";
+     // Store the filed's name that user not fill out
      var dh = "";
+     // Check user fill out these information or not
      if(edit_f == ''){
       ch += 'first name\n';
      }
@@ -553,6 +572,7 @@ or die('Error connecting');
       ch += 'zip\n';
      }
      if(edit_p != ''){
+     	// Check user fill out a valid phone number
      	if(((edit_p.length == 7) && !(isNaN(edit_p)))|| ((edit_p.length == 10) && !(isNaN(edit_p)))){
      		dh += '';
      	}
@@ -561,6 +581,7 @@ or die('Error connecting');
      	}
      }     
      if(edit_z != ''){
+     	// Check user fill out a valid zip code
      	if(((edit_z.length == 5) && !(isNaN(edit_z)))|| ((edit_z.length == 10))){
      		if(edit_z.length == 10){
      			if(!(isNaN(edit_z.slice(0,4))) && (edit_z.charAt(5) == '-') && !(isNaN(edit_z.slice(6,9)))){
@@ -579,6 +600,7 @@ or die('Error connecting');
      	}
      }
      if(edit_e != ''){
+     	// Check user fill out a valid e-mail address
      	if(edit_e.indexOf('@') > -1){
      		dh += '';
      	}
@@ -586,15 +608,20 @@ or die('Error connecting');
      		dh += 'WARRING: Your email address is invalid\n';
      	}
      }
-
+     // Check warrning information
      if(ch != '' || dh != ''){
+     // This case user fill out all information
      if(ch == ''){var re = confirm(dh + 'Do you still want to save it?');}
+     // This case user not fill out all information
      if(ch !=''){var re = confirm('WARRING: You did not fill your:\n' + ch + dh + 'Do you still want to save it?');}
+     // Click yes to submit the change
      if(re == true){
      document.getElementById("sendForm").submit();
+     // Click no not save the change
      }else{
      }     
      }
+     // All things right will save the change
      if(ch =='' && dh ==''){
      document.getElementById("sendForm").submit();
      }
