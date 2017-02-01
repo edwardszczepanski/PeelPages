@@ -31,7 +31,7 @@ if(!$_SESSION['auth'])
 
  </head>
 
- <body>
+ <body  style="background-image: url(assets/bk2.jpg);">
  <?php
 	$del_addr_Id = $_POST['del_addr_Id'];			
 	$del_addr_flag = $_POST['del_addr_flag'];		
@@ -146,7 +146,7 @@ if(!$_SESSION['auth'])
             	<table class="addContact">
                 <tr>
                 <td>
-                <p>Address Name:	</p>
+                <p>Address Book Name:	</p>
                 </td>
                 <td>
                 <input type="text" name="addr_name" id="addr_name" required>
