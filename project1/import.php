@@ -19,10 +19,10 @@
 <div style="position:relative;">
 <form action="import.php" method="POST" id="importform" style="margin-top: 2%;" enctype="multipart/form-data">
 
-<a href="#" >Please Click to open a .tsv file and type a name for a new address book, then click save!</a>
+<a href="#" class="btn btn-success" style="margin-bottom: 15px;">Please Click to open a .tsv file and type a name for a new address book, then click save!</a>
 <div>
 <input type="text" value="" style="float: left;" name="aname" required>
-<input type='file' style="opacity:0;filter:alpha(opactiy=0);position:absolute;top:0;left:0;width:200px;height:20px;cursor:pointer;" id = "input" name = "input" style="float: left; margin-left: 25px;">
+<input type='file' style="opacity:0;filter:alpha(opactiy=0);position:absolute;top:0;left:0;width:584px;height:34px;cursor:pointer;" id = "input" name = "input" style="float: left; margin-left: 25px;">
 <input class="btn btn-success" type="submit" value="Save" style="float: left; margin-left: 25px;" >
 </div>
 </form>
