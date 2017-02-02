@@ -94,6 +94,7 @@ if(!$_SESSION['auth'])
 			<div class="modal-content">
 				<span class="close">&times;</span>
 				<h3>Do you want to delete <span class="delete_addr_label" id="delete_addr_label"></span></h3>
+				<h3><font color= "red" >This will be permanent, data will not be recoverable</font></h3>
 				<form action="index.php" method="POST" id="sendForm" style="margin-top: 2%;">	
 					<input style="width: 50px; display: none;" type="text" name="del_addr_Id" id="del_addr_Id">		
 					<input class="btn btn-success" type="submit" value="Yes" style="float: right;">
