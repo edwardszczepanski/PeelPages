@@ -35,6 +35,7 @@ $(function() {
         if(selector.value == "City"){
             myInputBox.placeholder = "Searching through Cities";
         }
+        searchFunction()
     }
 
     //create contact modal
@@ -231,7 +232,7 @@ function pop_delete() {
 
 }
 
-function myFunction() {
+function searchFunction() {
     // Declare variables
     var input, filter, table, tr, td, i;
     input = document.getElementById("myInput");
