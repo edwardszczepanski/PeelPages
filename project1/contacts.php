@@ -392,6 +392,7 @@ or die('Error connecting');
 				<div class="modal-content">
 					<span class="close">&times;</span>
 					<h3>Do you want to delete <span class="delete_contact_label" id="delete_contact_label"></span></h3>
+					<h3><font color= "red" >This will be permanent, data will not be recoverable</font></h3>
 					<form action="contacts.php" method="POST" id="sendForm" style="margin-top: 2%;">							
 						<input style="width: 50px;display: none;" type="text" name="addId" value="<?php echo $addId;?>">
 						<input style="width: 50px;display: none;" type="text" name="del_contact_Id" id="del_contact_Id">							
@@ -437,28 +438,28 @@ or die('Error connecting');
      var dh = "";
      // Check user fill these information or not
      if(add_f == ''){
-      ch += 'first name\n';
+      ch += 'First Name\n';
      }
      if(add_l == ''){
-      ch += 'last name\n';
+      ch += 'Last Name\n';
      }
      if(add_p == ''){
-      ch += 'phone number\n';
+      ch += 'Phone Number\n';
      }
      if(add_a1 == ''){
-      ch += 'address 1\n';
+      ch += 'Address 1\n';
      }
      if(add_a2 == ''){
-      ch += 'address 2\n';
+      ch += 'Address 2\n';
      }
      if(add_c == ''){
-      ch += 'city\n';
+      ch += 'City\n';
      }
      if(add_s == ''){
-      ch += 'state\n';
+      ch += 'State\n';
      }
      if(add_z == ''){
-      ch += 'zip\n';
+      ch += 'Zip Code\n';
      }
      if(add_p != ''){
      	// Check user fill out a valid phone number
@@ -466,7 +467,7 @@ or die('Error connecting');
      		dh += '';
      	}
      	else{
-     		dh += 'WARRING: Your phone number is wrong!\n';
+     		dh += 'WARNING: Your phone number is wrong!\n';
      	}
      }     
      if(add_z != ''){
@@ -477,7 +478,7 @@ or die('Error connecting');
      				dh += '';
      			}
      			else{
-     				dh += 'WARRING: Your zip code is wrong!\n';
+     				dh += 'WARNING: Your zip code is wrong!\n';
      			}
      		}
      		else{
@@ -485,7 +486,7 @@ or die('Error connecting');
      		}     		
      	}
      	else{
-     		dh += 'WARRING: Your zip code is wrong!\n';
+     		dh += 'WARNING: Your zip code is wrong!\n';
      	}
      }
      // Check user fill out a valid e-mail address
@@ -494,15 +495,15 @@ or die('Error connecting');
      		dh += '';
      	}
      	else{
-     		dh += 'WARRING: Your email address is invalid\n';
+     		dh += 'WARNING: Your email address is invalid\n';
      	}
      }
-     // Check warrning information
+     // Check warning information
      if(ch != '' || dh != ''){
      // This case user fill out all information
      if(ch == ''){var re = confirm(dh + 'Do you still want to save it?');}
      // This case user not fill out all information
-     if(ch !=''){var re = confirm('WARRING: You did not fill your:\n' + ch + dh + 'Do you still want to save it?');}
+     if(ch !=''){var re = confirm('WARNING: You did not fill your:\n' + ch + dh + 'Do you still want to save it?');}
      // Click yes to save the information
      if(re == true){
      document.getElementById("senddForm").submit();
@@ -577,7 +578,7 @@ or die('Error connecting');
      		dh += '';
      	}
      	else{
-     		dh += 'WARRING: Your phone number is wrong!\n';
+     		dh += 'WARNING: Your phone number is wrong!\n';
      	}
      }     
      if(edit_z != ''){
@@ -588,7 +589,7 @@ or die('Error connecting');
      				dh += '';
      			}
      			else{
-     				dh += 'WARRING: Your zip code is wrong!\n';
+     				dh += 'WARNING: Your zip code is wrong!\n';
      			}
      		}
      		else{
@@ -596,7 +597,7 @@ or die('Error connecting');
      		}     		
      	}
      	else{
-     		dh += 'WARRING: Your zip code is wrong!\n';
+     		dh += 'WARNING: Your zip code is wrong!\n';
      	}
      }
      if(edit_e != ''){
@@ -605,15 +606,15 @@ or die('Error connecting');
      		dh += '';
      	}
      	else{
-     		dh += 'WARRING: Your email address is invalid\n';
+     		dh += 'WARNING: Your email address is invalid\n';
      	}
      }
-     // Check warrning information
+     // Check warning information
      if(ch != '' || dh != ''){
      // This case user fill out all information
      if(ch == ''){var re = confirm(dh + 'Do you still want to save it?');}
      // This case user not fill out all information
-     if(ch !=''){var re = confirm('WARRING: You did not fill your:\n' + ch + dh + 'Do you still want to save it?');}
+     if(ch !=''){var re = confirm('WARNING: You did not fill your:\n' + ch + dh + 'Do you still want to save it?');}
      // Click yes to submit the change
      if(re == true){
      document.getElementById("sendForm").submit();
