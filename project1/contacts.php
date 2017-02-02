@@ -438,28 +438,28 @@ or die('Error connecting');
      var dh = "";
      // Check user fill these information or not
      if(add_f == ''){
-      ch += 'first name\n';
+      ch += 'First Name\n';
      }
      if(add_l == ''){
-      ch += 'last name\n';
+      ch += 'Last Name\n';
      }
      if(add_p == ''){
-      ch += 'phone number\n';
+      ch += 'Phone Number\n';
      }
      if(add_a1 == ''){
-      ch += 'address 1\n';
+      ch += 'Address 1\n';
      }
      if(add_a2 == ''){
-      ch += 'address 2\n';
+      ch += 'Address 2\n';
      }
      if(add_c == ''){
-      ch += 'city\n';
+      ch += 'City\n';
      }
      if(add_s == ''){
-      ch += 'state\n';
+      ch += 'State\n';
      }
      if(add_z == ''){
-      ch += 'zip\n';
+      ch += 'Zip Code\n';
      }
      if(add_p != ''){
      	// Check user fill out a valid phone number
