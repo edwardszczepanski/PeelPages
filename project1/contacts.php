@@ -466,7 +466,7 @@ or die('Error connecting');
      		dh += '';
      	}
      	else{
-     		dh += 'WARRING: Your phone number is wrong!\n';
+     		dh += 'WARNING: Your phone number is wrong!\n';
      	}
      }     
      if(add_z != ''){
@@ -477,7 +477,7 @@ or die('Error connecting');
      				dh += '';
      			}
      			else{
-     				dh += 'WARRING: Your zip code is wrong!\n';
+     				dh += 'WARNING: Your zip code is wrong!\n';
      			}
      		}
      		else{
@@ -485,7 +485,7 @@ or die('Error connecting');
      		}     		
      	}
      	else{
-     		dh += 'WARRING: Your zip code is wrong!\n';
+     		dh += 'WARNING: Your zip code is wrong!\n';
      	}
      }
      // Check user fill out a valid e-mail address
@@ -494,15 +494,15 @@ or die('Error connecting');
      		dh += '';
      	}
      	else{
-     		dh += 'WARRING: Your email address is invalid\n';
+     		dh += 'WARNING: Your email address is invalid\n';
      	}
      }
-     // Check warrning information
+     // Check warning information
      if(ch != '' || dh != ''){
      // This case user fill out all information
      if(ch == ''){var re = confirm(dh + 'Do you still want to save it?');}
      // This case user not fill out all information
-     if(ch !=''){var re = confirm('WARRING: You did not fill your:\n' + ch + dh + 'Do you still want to save it?');}
+     if(ch !=''){var re = confirm('WARNING: You did not fill your:\n' + ch + dh + 'Do you still want to save it?');}
      // Click yes to save the information
      if(re == true){
      document.getElementById("senddForm").submit();
@@ -577,7 +577,7 @@ or die('Error connecting');
      		dh += '';
      	}
      	else{
-     		dh += 'WARRING: Your phone number is wrong!\n';
+     		dh += 'WARNING: Your phone number is wrong!\n';
      	}
      }     
      if(edit_z != ''){
@@ -588,7 +588,7 @@ or die('Error connecting');
      				dh += '';
      			}
      			else{
-     				dh += 'WARRING: Your zip code is wrong!\n';
+     				dh += 'WARNING: Your zip code is wrong!\n';
      			}
      		}
      		else{
@@ -596,7 +596,7 @@ or die('Error connecting');
      		}     		
      	}
      	else{
-     		dh += 'WARRING: Your zip code is wrong!\n';
+     		dh += 'WARNING: Your zip code is wrong!\n';
      	}
      }
      if(edit_e != ''){
@@ -605,15 +605,15 @@ or die('Error connecting');
      		dh += '';
      	}
      	else{
-     		dh += 'WARRING: Your email address is invalid\n';
+     		dh += 'WARNING: Your email address is invalid\n';
      	}
      }
-     // Check warrning information
+     // Check warning information
      if(ch != '' || dh != ''){
      // This case user fill out all information
      if(ch == ''){var re = confirm(dh + 'Do you still want to save it?');}
      // This case user not fill out all information
-     if(ch !=''){var re = confirm('WARRING: You did not fill your:\n' + ch + dh + 'Do you still want to save it?');}
+     if(ch !=''){var re = confirm('WARNING: You did not fill your:\n' + ch + dh + 'Do you still want to save it?');}
      // Click yes to submit the change
      if(re == true){
      document.getElementById("sendForm").submit();
