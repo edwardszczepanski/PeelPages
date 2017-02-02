@@ -166,7 +166,7 @@ if(!$_SESSION['auth'])
             <option>State</option>
             <option>Zip Code</option>
           </select>
-            <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Searching through First Names">
+            <input type="text" class="form-control" id="myInput" onkeyup="searchFunction()" placeholder="Searching through First Names">
             </div>
            <table id="myTable" class="table" >
              <thead>
