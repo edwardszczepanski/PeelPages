@@ -392,6 +392,7 @@ or die('Error connecting');
 				<div class="modal-content">
 					<span class="close">&times;</span>
 					<h3>Do you want to delete <span class="delete_contact_label" id="delete_contact_label"></span></h3>
+					<h2><font color= "red" >This will be permanent, data will not be recoverable</font></h2>
 					<form action="contacts.php" method="POST" id="sendForm" style="margin-top: 2%;">							
 						<input style="width: 50px;display: none;" type="text" name="addId" value="<?php echo $addId;?>">
 						<input style="width: 50px;display: none;" type="text" name="del_contact_Id" id="del_contact_Id">							
