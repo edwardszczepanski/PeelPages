@@ -1,15 +1,4 @@
 $(function() {
-	filesystem = null;
-    var pages = new Array();
-    $('#first').on('click', function(){
-        pages.push(window.open('./childWindow.html?' + guid()));
-    });
-    $('#closeAll').on('click', function(){
-        for (var i = 0; i < pages.length; ++i){
-            pages[i].close();
-        }
-    });
-
 	$("input:checkbox").on('click', function() {
 	// in the handler, 'this' refers to the box clicked on
 	var $box = $(this);

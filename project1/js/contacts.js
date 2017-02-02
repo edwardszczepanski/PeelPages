@@ -1,12 +1,14 @@
 $(function() {
+    // This piece of code sets the tab title to the address book name
     document.title = document.getElementById('titleh2').innerHTML.split(':')[1];
 
+    // Here are the two sort button function declarations.
+    // They pass in a reference to the table and the column they will sort by
+    var table = document.getElementById("myTable");
     document.getElementById("sortName").onclick = function() {
-        var table = document.getElementById("myTable");
         sortTable(table, 1);
     };
     document.getElementById("sortZIP").onclick = function() {
-        var table = document.getElementById("myTable");
         sortTable(table, 8);
     };
 
@@ -26,9 +28,15 @@ $(function() {
         }
     });
 
+
+    //This section of code provides search functionality.
+    // Search Index is a global value that looks at what column to search by
     searchIndex = 0;
     var selector = document.getElementById("sel1");
     var myInputBox = document.getElementById("myInput");
+    // I first get the new index
+    // Then I update the input box's value
+    // Then I run the searchFunction that will update the listed entries
     selector.onchange = function() {
         searchIndex = selector.selectedIndex;
         myInputBox.placeholder = "Searching through " + selector.value + "s";
@@ -233,16 +241,15 @@ function pop_delete() {
 }
 
 function searchFunction() {
-    // Declare variables
+    // Declaring variables
     var input, filter, table, tr, td, i;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
     table = document.getElementById("myTable");
     tr = table.getElementsByTagName("tr");
 
-    // Loop through all table rows, and hide those who don't match the search query
+    // I go through all the rows in the table and hide the ones that don't match the search parameters
     for (i = 0; i < tr.length; i++) {
-        //td = tr[i].getElementsByTagName("td")[0];
         td = tr[i].getElementsByTagName("td")[searchIndex];
         if (td) {
             if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
