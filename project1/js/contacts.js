@@ -143,10 +143,13 @@ $(function() {
     });
 });
 
+// Global_col keeps track of what parameter I am sorting by
+// It will be initialized to -1 and will only be assigned to 0, 1, and 8 which represents the first name, last name, and zip code columns respectively.
 global_col = -1;
+// This boolean prevents against infinite recursion
 checkingFirstName = false;
+// This function extracts all the valuable information and sort it 
 function sortTable(table, col) {
-    // 1 and 8
     var tb = table.tBodies[0];
     var tr = Array.prototype.slice.call(tb.rows, 0);
     var i;
@@ -157,6 +160,9 @@ function sortTable(table, col) {
     }
 }
 
+// This is my special compare function that adds extra functionality.
+// It makes null values to go to the bottom, not the top
+// It will recursively call itself to break ties by the first name
 function compare(a, b){
     col = global_col;
     if(checkingFirstName == true){
