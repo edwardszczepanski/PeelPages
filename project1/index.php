@@ -183,7 +183,7 @@ if(!$_SESSION['auth'])
   
  } 
  </script>
- <script src="./js/demo.js"></script>
+ <script src="./js/index.js"></script>
  <script src="./js/bootstrap.min.js"></script>
  <script >
 	//add address 
